@@ -1,0 +1,38 @@
+{
+  "name": "agilearning-plugin",
+  "version": "1.0.0",
+  "description": "A React plugin to add gamification elements to an LMS",
+  "main": "src/main.jsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kathrynhoule/agilearning-plugin.git"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "gamification",
+    "plugin",
+    "hookstate"
+  ],
+  "author": "Kathryn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kathrynhoule/agilearning-plugin/issues"
+  },
+  "homepage": "https://github.com/kathrynhoule/agilearning-plugin#readme",
+  "dependencies": {
+    "@hookstate/core": "^4.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.3.3"
+  }
+}
