@@ -6,6 +6,8 @@ This project is a React plugin designed to add gamification elements to an LMS. 
 ## Features
 So far, this project is building towards having an XP tracker for students, achievements for students to earn as they complete tasks, and a user page that will be added to an LMS that uses our plugin, which will display a student's info along with different tracking of their progress, experience, achievements, and current level.
 
+Beyond this, our plugin will also include a quiz/game portion where students can take quizzes and play games in order to gain experience and engage with content.
+
 ## Dependencies
 This project utilizes React, Vite, and Hookstate.
 
