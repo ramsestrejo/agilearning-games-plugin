@@ -1,21 +1,20 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { gameTypeState } from '../state/gameTypeState';
+import { useHistory } from 'react-router-dom';
 import { gameCodeState } from '../state/gameCodeState';
 
 const HomeScreen = () => {
-     const gameCode = useHookstate(gameCodeState);
      const gameType = useHookstate(gameTypeState);
+     const history = useHistory();
 
      const handleCreateGame = () => {
      // placeholder logic for creating a game
      console.log(`Create Game of type: ${gameType.get()}`);
-};
+     };
 
      const handleJoinGame = () => {
-     // placeholder logic for joining a game
-     console.log(`Join Game with code: ${gameCode.get()}`);
-};
+          history.push('/join-game');
+     };
 
      return (
           <div>
@@ -33,12 +32,6 @@ const HomeScreen = () => {
                     <button onClick={handleCreateGame}>Create Game</button>
                </div>
                <div>
-                    <input
-                    type="text"
-                    placeholder="Enter a Game Code"
-                    value={gameCode.get()}
-                    onChange={(e) => gameCode.set(e.target.value)}
-                    />
                     <button onClick={handleJoinGame}>Join Game</button>
                </div>
           </div>
