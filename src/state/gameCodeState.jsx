@@ -1,3 +1,3 @@
 import { hookstate } from '@hookstate/core';
 
-export const quizCodeState = hookstate('');
+export const gameCodeState = hookstate('');

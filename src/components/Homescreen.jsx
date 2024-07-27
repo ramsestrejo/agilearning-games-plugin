@@ -1,18 +1,18 @@
 import React from 'react';
-import { useState } from '@hookstate/core';
+import { useHookstate } from '@hookstate/core';
 import { gameTypeState } from '../state/gameTypeState';
 import { quizCodeState } from '../state/quizCodeState';
 
 const HomeScreen = () => {
-     const quizCode = useState(quizCodeState);
-     const gameType = useState(gameTypeState);
+     const quizCode = useHookstate(quizCodeState);
+     const gameType = useHookstate(gameTypeState);
 
      const handleCreateGame = () => {
      // placeholder logic for creating a game
      console.log(`Create Game of type: ${gameType.get()}`);
 };
 
-     const handleJoinQuiz = () => {
+     const handleJoinGame = () => {
      // placeholder logic for joining a game
      console.log(`Join Game with code: ${quizCode.get()}`);
 };
