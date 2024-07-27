@@ -2,6 +2,7 @@ import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { gameTypeState } from '../state/gameTypeState.jsx';
 import { useNavigate } from 'react-router-dom';
+import GameCard from './GameCard';
 import './CreateGameScreen.css';
 
 const CreateGameScreen = () => {
@@ -18,11 +19,11 @@ const CreateGameScreen = () => {
       <h1>Create a Game</h1>
       <div className="menu">
         {gameType.get().map(type => (
-          <div key={type.id} className="game-type-card">
-            <h2>{type.name}</h2>
-            <p>{type.description}</p> {/* description for each game type */}
-            <button onClick={() => handleCreateGame(type.id)}>Create {type.name} Game</button>
-          </div>
+          <GameCard 
+            key={type.id} 
+            type={type} 
+            onCreateGame={handleCreateGame} 
+          />
         ))}
       </div>
     </div>
