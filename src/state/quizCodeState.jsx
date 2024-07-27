@@ -1,3 +1,3 @@
-import { createState } from '@hookstate/core';
+import { hookstate } from '@hookstate/core';
 
-export const quizCodeState = createState('');
+export const quizCodeState = hookstate('');

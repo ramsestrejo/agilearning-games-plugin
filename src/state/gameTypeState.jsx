@@ -1,3 +1,3 @@
-import { createState } from '@hookstate/core';
+import { hookstate } from '@hookstate/core';
 
-export const gameTypeState = createState('Type1');
+export const gameTypeState = hookstate('Type1');

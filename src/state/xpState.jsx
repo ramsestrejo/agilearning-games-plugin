@@ -1,8 +1,8 @@
-import { createState } from '@hookstate/core';
+import { hookstate } from '@hookstate/core';
 
 const initialState = {
 };
 
-const xpState = createState(initialState);
+const xpState = hookstate(initialState);
 
 export default xpState;

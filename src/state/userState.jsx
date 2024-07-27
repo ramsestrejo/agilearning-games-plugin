@@ -1,4 +1,4 @@
-import { createState } from '@hookstate/core';
+import { hookstate } from '@hookstate/core';
 
 const initialState = {
      id: '',
@@ -6,6 +6,6 @@ const initialState = {
      score: 0,
 };
 
-const userState = createState(initialState);
+const userState = hookstate(initialState);
 
 export default userState;
