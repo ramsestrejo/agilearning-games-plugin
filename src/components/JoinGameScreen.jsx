@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { gameCodeState } from '../state/gameCodeState';
+import { gameCodeState } from '../state/gameCodeState.jsx';
 import './HomeScreen.css';
 
 const JoinGameScreen = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomeScreen from './components/HomeScreen';
-import JoinGameScreen from './components/JoinGameScreen';
-import CreateGameScreen from './components/CreateGameScreen';
+import HomeScreen from './components/HomeScreen.jsx';
+import JoinGameScreen from './components/JoinGameScreen.jsx';
+import CreateGameScreen from './components/CreateGameScreen.jsx';
 
 const App = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { gameTypeState } from '../state/gameTypeState';
+import { gameTypeState } from '../state/gameTypeState.jsx';
 import { useNavigate } from 'react-router-dom';
 import './CreateGameScreen.css';
 
