@@ -1,10 +1,10 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { gameTypeState } from '../state/gameTypeState';
-import { quizCodeState } from '../state/gameCodeState';
+import { gameCodeState } from '../state/gameCodeState';
 
 const HomeScreen = () => {
-     const quizCode = useHookstate(quizCodeState);
+     const gameCode = useHookstate(gameCodeState);
      const gameType = useHookstate(gameTypeState);
 
      const handleCreateGame = () => {
@@ -14,7 +14,7 @@ const HomeScreen = () => {
 
      const handleJoinGame = () => {
      // placeholder logic for joining a game
-     console.log(`Join Game with code: ${quizCode.get()}`);
+     console.log(`Join Game with code: ${gameCode.get()}`);
 };
 
      return (
@@ -27,7 +27,7 @@ const HomeScreen = () => {
                     value={gameType.get()}
                     onChange={(e) => gameType.set(e.target.value)}
                     >
-                         <option value="Type1">Quiz</option>
+                         <option value="Type1">Game</option>
                          <option value="Type2">Story</option>
                     </select>
                     <button onClick={handleCreateGame}>Create Game</button>
@@ -36,8 +36,8 @@ const HomeScreen = () => {
                     <input
                     type="text"
                     placeholder="Enter a Game Code"
-                    value={quizCode.get()}
-                    onChange={(e) => quizCode.set(e.target.value)}
+                    value={gameCode.get()}
+                    onChange={(e) => gameCode.set(e.target.value)}
                     />
                     <button onClick={handleJoinGame}>Join Game</button>
                </div>
