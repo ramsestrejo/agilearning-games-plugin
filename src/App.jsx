@@ -1,11 +1,16 @@
 import React from 'react';
-import HomeScreen from './components/HomeScreen'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeScreen from './components/HomeScreen';
+import JoinGameScreen from './components/JoinGameScreen';
 
 const App = () => {
   return (
-    <div>
-      <HomeScreen />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/join-game" element={<JoinGameScreen />} />
+      </Routes>
+    </Router>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { useHistory } from 'react-router-dom';
-import { gameCodeState } from '../state/gameCodeState';
+import { useNavigate } from 'react-router-dom';
+import { gameTypeState } from '../state/gameTypeState';
 
 const HomeScreen = () => {
      const gameType = useHookstate(gameTypeState);
-     const history = useHistory();
+     const history = useNavigate();
 
      const handleCreateGame = () => {
      // placeholder logic for creating a game
