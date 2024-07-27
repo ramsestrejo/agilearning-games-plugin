@@ -2,6 +2,7 @@ import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { useNavigate } from 'react-router-dom';
 import { gameTypeState } from '../state/gameTypeState';
+import './HomeScreen.css';
 
 const HomeScreen = () => {
      const gameType = useHookstate(gameTypeState);
@@ -21,25 +22,27 @@ const HomeScreen = () => {
      };
 
      return (
-          <div>
+          <div className="home-screen">
           <h1>Game App</h1>
-               <div>
-                    <label htmlFor="gameType">Select Game Type:</label>
-                    <select
-                    id="gameType"
-                    value={selectedGameType}
-                    onChange={handleChangeGameType}
-                    >
-                    {gameType.get().map(type => (
-                    <option key={type.id} value={type.id}>
-                    {type.name}
-                    </option>
-                    ))}
-                    </select>
-                    <button onClick={handleCreateGame}>Create Game</button>
-               </div>
-               <div>
-                    <button onClick={handleJoinGame}>Join Game</button>
+               <div className="menu">
+                    <div>
+                         <label htmlFor="gameType">Select Game Type:</label>
+                         <select
+                         id="gameType"
+                         value={selectedGameType}
+                         onChange={handleChangeGameType}
+                         >
+                         {gameType.get().map(type => (
+                         <option key={type.id} value={type.id}>
+                         {type.name}
+                         </option>
+                         ))}
+                         </select>
+                         <button onClick={handleCreateGame}>Create Game</button>
+                    </div>
+                    <div>
+                         <button onClick={handleJoinGame}>Join Game</button>
+                    </div>
                </div>
           </div>
      );
