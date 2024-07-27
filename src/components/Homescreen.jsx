@@ -6,7 +6,6 @@ import './HomeScreen.css';
 
 const HomeScreen = () => {
      const gameType = useHookstate(gameTypeState);
-     const [selectedGameType, setSelectedGameType] = React.useState(gameType.get()[0].id);
      const navigate = useNavigate();
 
      const handleCreateGame = () => {

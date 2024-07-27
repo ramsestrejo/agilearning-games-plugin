@@ -2,7 +2,7 @@ import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { gameTypeState } from '../state/gameTypeState';
 import { useNavigate } from 'react-router-dom';
-import './HomeScreen.css';
+import './CreateGameScreen.css';
 
 const CreateGameScreen = () => {
   const gameType = useHookstate(gameTypeState);
@@ -16,7 +16,7 @@ const CreateGameScreen = () => {
   return (
     <div className="create-game-screen">
       <h1>Create a Game</h1>
-      <div className="game-type-options">
+      <div className="menu">
         {gameType.get().map(type => (
           <div key={type.id} className="game-type-card">
             <h2>{type.name}</h2>
