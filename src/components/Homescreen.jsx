@@ -10,11 +10,7 @@ const HomeScreen = () => {
      const navigate = useNavigate();
 
      const handleCreateGame = () => {
-          console.log(`Create Game of type: ${selectedGameType}`);
-     };
-
-     const handleChangeGameType = (event) => {
-          setSelectedGameType(event.target.value);
+          navigate('/create-game');
      };
 
      const handleJoinGame = () => {
@@ -26,18 +22,6 @@ const HomeScreen = () => {
           <h1>Game App</h1>
                <div className="menu">
                     <div>
-                         <label htmlFor="gameType">Select Game Type:</label>
-                         <select
-                         id="gameType"
-                         value={selectedGameType}
-                         onChange={handleChangeGameType}
-                         >
-                         {gameType.get().map(type => (
-                         <option key={type.id} value={type.id}>
-                         {type.name}
-                         </option>
-                         ))}
-                         </select>
                          <button onClick={handleCreateGame}>Create Game</button>
                     </div>
                     <div>
