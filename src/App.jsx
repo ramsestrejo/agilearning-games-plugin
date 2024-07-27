@@ -1,13 +1,12 @@
 import React from 'react';
+import HomeScreen from './components/Homescreen'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>LMS with Gamification</h1>
-      </header>
+    <div>
+      <HomeScreen />
     </div>
   );
-}
+};
 
 export default App;
