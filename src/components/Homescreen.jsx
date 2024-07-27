@@ -5,29 +5,36 @@ import { gameTypeState } from '../state/gameTypeState';
 
 const HomeScreen = () => {
      const gameType = useHookstate(gameTypeState);
-     const history = useNavigate();
+     const [selectedGameType, setSelectedGameType] = React.useState(gameType.get()[0].id);
+     const navigate = useNavigate();
 
      const handleCreateGame = () => {
-     // placeholder logic for creating a game
-     console.log(`Create Game of type: ${gameType.get()}`);
+          console.log(`Create Game of type: ${selectedGameType}`);
+     };
+
+     const handleChangeGameType = (event) => {
+          setSelectedGameType(event.target.value);
      };
 
      const handleJoinGame = () => {
-          history.push('/join-game');
+          navigate('/join-game');
      };
 
      return (
           <div>
           <h1>Game App</h1>
                <div>
-               <label htmlFor="gameType">Select Game Type:</label>
+                    <label htmlFor="gameType">Select Game Type:</label>
                     <select
                     id="gameType"
-                    value={gameType.get()}
-                    onChange={(e) => gameType.set(e.target.value)}
+                    value={selectedGameType}
+                    onChange={handleChangeGameType}
                     >
-                         <option value="Type1">Game</option>
-                         <option value="Type2">Story</option>
+                    {gameType.get().map(type => (
+                    <option key={type.id} value={type.id}>
+                    {type.name}
+                    </option>
+                    ))}
                     </select>
                     <button onClick={handleCreateGame}>Create Game</button>
                </div>
