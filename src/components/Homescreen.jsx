@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from '@hookstate/core';
-import { quizCodeState } from './state';
+import { quizCodeState } from '../state/quizCodeState';
 
 const HomeScreen = () => {
      const quizCode = useState(quizCodeState);
