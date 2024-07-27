@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { gameTypeState } from '../state/gameTypeState';
-import { quizCodeState } from '../state/quizCodeState';
+import { quizCodeState } from '../state/gameCodeState';
 
 const HomeScreen = () => {
      const quizCode = useHookstate(quizCodeState);
