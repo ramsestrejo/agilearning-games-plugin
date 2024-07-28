@@ -14,7 +14,7 @@ const CreateGameScreen = () => {
 
   const handleCreateGame = (gameTypeId) => {
     console.log(`Creating game of type: ${gameTypeId}`);
-    navigate(`/create-game/${gameTypeId}`);
+    navigate(`/create-game/${gameTypeId.toLowerCase()}`);
   };
 
   const handleDotClick = (index) => {
