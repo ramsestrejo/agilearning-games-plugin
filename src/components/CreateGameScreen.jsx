@@ -25,7 +25,7 @@ const CreateGameScreen = () => {
 
   return (
     <div className="create-game-screen">
-      <h1>Create a Game</h1>
+      <h1>Choose a type of game to create</h1>
       <div className="carousel">
         <div
           className="carousel-inner"
