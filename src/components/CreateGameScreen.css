@@ -2,13 +2,13 @@ html, body {
      height: 100%;
      margin: 0;
      padding: 0;
-}
-
-body {
+   }
+   
+   body {
      background-color: #4cc7bd;
-}
-
-.create-game-screen {
+   }
+   
+   .create-game-screen {
      font-family: Arial, Helvetica, sans-serif;
      display: flex;
      justify-content: center;
@@ -16,33 +16,34 @@ body {
      flex-direction: column;
      height: 100vh;
      width: 100vw;
-}
-
-.carousel {
+   }
+   
+   .carousel {
      display: flex;
      overflow: hidden;
-     width: 60%; 
-}
+     width: 80%; 
+     height: 80vh;
+   }
    
-.carousel-inner {
+   .carousel-inner {
      display: flex;
      transition: transform 0.5s ease-in-out;
-}
-
-.game-type-card {
-     min-width: 50%; 
-     box-sizing: border-box;
-     padding: 20px;
-     flex: 0 0 50%;
-}
+     flex: 1;
+   }
    
-.pagination {
+   .game-type-card {
+     min-width: 50%;
+     box-sizing: border-box;
+     margin: 0 10px;
+   }
+   
+   .pagination {
      display: flex;
      justify-content: center;
      margin-top: 20px;
- }
- 
- .pagination-dot {
+   }
+   
+   .pagination-dot {
      width: 10px;
      height: 10px;
      border-radius: 50%;
@@ -50,9 +51,10 @@ body {
      cursor: pointer;
      border: 2px solid #ffd73c;
      background-color: transparent;
- }
- 
- .pagination-dot.active {
+   }
+   
+   .pagination-dot.active {
      background-color: #ffd73c;
      border: 2px solid #ffd73c;
- }
+   }
+   
