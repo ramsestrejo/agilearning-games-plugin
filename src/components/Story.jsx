@@ -1,6 +1,5 @@
 import React from "react";
 import { useHookstate } from '@hookstate/core';
-import StoryButton from "./StoryButton";
 import './Story.css';
 
 const Story = () => {
@@ -20,9 +19,6 @@ const Story = () => {
             <p>More information? and here is a thing</p>
 
             <div>
-                <StoryButton answerId={1} />
-                <StoryButton answerId={2} />
-                <StoryButton answerId={3} />
             </div>
         </div>
     );
