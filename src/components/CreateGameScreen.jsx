@@ -21,7 +21,8 @@ const CreateGameScreen = () => {
     currentPage.set(index);
   };
 
-  const totalPages = Math.ceil(gameType.get().length / 2);
+  const itemsPerPage = 2;
+  const totalPages = Math.ceil(gameType.get().length / itemsPerPage);
 
   return (
     <div className="create-game-screen">
@@ -34,7 +35,7 @@ const CreateGameScreen = () => {
           {gameType.get().map((type, index) => (
             <GameCard key={type.id} type={type} onCreateGame={handleCreateGame} />
           ))}
-        </div>
+          </div>
       </div>
       <div className="pagination">
         {[...Array(totalPages).keys()].map(index => (
