@@ -21,8 +21,7 @@ const CreateGameScreen = () => {
     currentPage.set(index);
   };
 
-  const itemsPerPage = 2;
-  const totalPages = Math.ceil(gameType.get().length / itemsPerPage);
+  const totalPages = Math.ceil(gameType.get().length / 2);
 
   return (
     <div className="create-game-screen">
