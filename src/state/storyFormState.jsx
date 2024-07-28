@@ -1,10 +1,8 @@
 import { hookstate } from '@hookstate/core';
 
-const initialFormState = {
+export const formState = hookstate({
   storyText: '',
   question: '',
   answers: [''],
-  correctAnswer: '',
-};
-
-export const formState = hookstate(initialFormState);
+  correctAnswer: ''
+});
