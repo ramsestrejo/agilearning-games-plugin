@@ -21,7 +21,8 @@ const CreateGameScreen = () => {
     currentPage.set(index);
   };
 
-  const totalPages = Math.ceil(gameType.get().length / 2);
+  const cardsPerPage = 2;
+  const totalPages = Math.ceil(gameType.get().length / cardsPerPage);
 
   return (
     <div className="create-game-screen">
@@ -29,12 +30,12 @@ const CreateGameScreen = () => {
       <div className="carousel">
         <div
           className="carousel-inner"
-          style={{ transform: `translateX(-${currentPage.get() * 100}%)` }}
+          style={{ transform: `translateX(-${currentPage.get() * (100 / totalPages)}%)`, width: `${totalPages * 100}%` }}
         >
-          {gameType.get().map((type, index) => (
+          {gameType.get().map((type) => (
             <GameCard key={type.id} type={type} onCreateGame={handleCreateGame} />
           ))}
-          </div>
+        </div>
       </div>
       <div className="pagination">
         {[...Array(totalPages).keys()].map(index => (

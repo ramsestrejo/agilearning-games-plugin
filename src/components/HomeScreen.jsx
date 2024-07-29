@@ -5,30 +5,25 @@ import { gameTypeState } from '../state/gameTypeState.jsx';
 import './HomeScreen.css';
 
 const HomeScreen = () => {
-     const gameType = useHookstate(gameTypeState);
      const navigate = useNavigate();
-
+ 
      const handleCreateGame = () => {
-          navigate('/create-game');
+         navigate('/create-game');
      };
-
+ 
      const handleJoinGame = () => {
-          navigate('/join-game');
+         navigate('/join-game');
      };
-
+ 
      return (
-          <div className="home-screen">
-          <h1>Game App</h1>
-               <div className="menu">
-                    <div>
-                         <button onClick={handleCreateGame}>Create Game</button>
-                    </div>
-                    <div>
-                         <button onClick={handleJoinGame}>Join Game</button>
-                    </div>
-               </div>
-          </div>
+         <div className="home-screen">
+             <h1>AgiLearning Game App</h1>
+             <div className="menu">
+                 <button className="menu-button" onClick={handleCreateGame}>Create Game</button>
+                 <button className="menu-button" onClick={handleJoinGame}>Join Game</button>
+             </div>
+         </div>
      );
-};
+ };
  
 export default HomeScreen;
