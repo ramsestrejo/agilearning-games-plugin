@@ -12,3 +12,4 @@ const GameCard = ({ type, onCreateGame }) => {
 };
 
 export default GameCard;
+
