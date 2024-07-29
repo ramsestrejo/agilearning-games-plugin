@@ -27,6 +27,7 @@ const CreateGameScreen = () => {
   return (
     <div className="create-game-screen">
       <h1>Choose a type of game to create</h1>
+      <div className="carousel-container">
       <div className="carousel">
         <div
           className="carousel-inner"
@@ -46,6 +47,7 @@ const CreateGameScreen = () => {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 };
