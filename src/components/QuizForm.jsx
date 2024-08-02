@@ -1,19 +1,42 @@
 import React from 'react';
+import { useHookstate } from '@hookstate/core';
+import QuizQuestionInput from './QuizQuestionInput';
 
 const QuizForm = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handling quiz form submission
-  };
+    const state = useHookstate({
+        questions: [
+            {
+                questionText: '',
+                answers: [''],
+                correctAnswer: ''
+            }
+        ]
+    });
 
-  return (
-    <div>
-      <h1>Create a Quiz</h1>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const quizData = state.get();
+        console.log('Quiz Data:', quizData);
+        // logic to submit quiz data
+    };
+
+    const handleAddQuestion = () => {
+        state.questions.merge([{
+            questionText: '',
+            answers: [''],
+            correctAnswer: ''
+        }]);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            {state.questions.map((questionState, index) => (
+                <QuizQuestionInput key={index} index={index} questionState={questionState} />
+            ))}
+            <button type="button" onClick={handleAddQuestion}>Add Question</button>
+            <button type="submit">Submit Quiz</button>
+        </form>
+    );
 };
 
 export default QuizForm;
