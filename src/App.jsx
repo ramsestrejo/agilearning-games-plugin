@@ -4,7 +4,7 @@ import HomeScreen from "./components/HomeScreen.jsx";
 import JoinGameScreen from './components/JoinGameScreen.jsx';
 import CreateGameScreen from './components/CreateGameScreen.jsx';
 import QuizForm from './components/QuizGame/QuizForm.jsx';
-import StoryForm from './components/StoryForm.jsx';
+import StoryForm from './components/StoryGame/StoryForm.jsx';
 
 
 const App = () => {
