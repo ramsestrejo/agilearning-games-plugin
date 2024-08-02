@@ -1,50 +1,44 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { formState } from '../state/storyFormState';
-import AnswerInput from './AnswerInput';
-import CorrectAnswerSelect from './CorrectAnswerSelect';
+import StoryBlockInput from './StoryBlockInput';
 
 const StoryForm = () => {
-  const state = useHookstate(formState);
+    const state = useHookstate({
+        storyBlocks: [
+            {
+                storyText: '',
+                question: '',
+                answers: [''],
+                correctAnswer: ''
+            }
+        ]
+    });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const storyData = state.get();
-    console.log('Story Data:', storyData);
-    // submit data to database
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const storyData = state.get();
+        console.log('Story Data:', storyData);
+        // logic to submit story data
+    };
 
-  return (
-    <div>
-      <h1>Create a Story</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Story Text:
-            <textarea
-              value={state.storyText.get()}
-              onChange={(e) => state.storyText.set(e.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Question:
-            <input
-              type="text"
-              value={state.question.get()}
-              onChange={(e) => state.question.set(e.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <AnswerInput />
-        <CorrectAnswerSelect />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
+    const handleAddStoryBlock = () => {
+        state.storyBlocks.merge([{
+            storyText: '',
+            question: '',
+            answers: [''],
+            correctAnswer: ''
+        }]);
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            {state.storyBlocks.map((blockState, index) => (
+                <StoryBlockInput key={index} index={index} blockState={blockState} />
+            ))}
+            <button type="button" onClick={handleAddStoryBlock}>Add Story Block</button>
+            <button type="submit">Submit Story</button>
+        </form>
+    );
 };
 
 export default StoryForm;
