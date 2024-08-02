@@ -17,6 +17,14 @@ const StoryBlockInput = ({ index, blockState }) => {
         answers.set(updatedAnswers);
     };
 
+    const handleRemoveAnswer = (i) => {
+        const updatedAnswers = answers.get().filter((_, j) => j !== i);
+        answers.set(updatedAnswers);
+        if (correctAnswer.get() === answers.get()[i]) {
+            correctAnswer.set('');
+        }
+    };
+
     return (
         <div>
             <h3>Story Block {index + 1}</h3>
@@ -38,15 +46,16 @@ const StoryBlockInput = ({ index, blockState }) => {
                 />
             </label>
             <div>
-                <label>Answers:</label>
+            <label>Answers:</label>
                 {answers.get().map((answer, i) => (
-                    <div key={i}>
+                    <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
                         <input
                             type="text"
                             value={answer}
                             onChange={(e) => handleAnswerChange(i, e.target.value)}
                             required
                         />
+                        <button type="button" onClick={() => handleRemoveAnswer(i)}>Remove</button>
                     </div>
                 ))}
                 <button type="button" onClick={handleAddAnswer}>Add Answer</button>
