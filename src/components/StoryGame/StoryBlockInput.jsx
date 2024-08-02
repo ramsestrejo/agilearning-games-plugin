@@ -1,4 +1,5 @@
 import React from 'react';
+import './StoryForm.css';
 
 const StoryBlockInput = ({ index, blockState }) => {
     const storyText = blockState.storyText;
@@ -26,7 +27,7 @@ const StoryBlockInput = ({ index, blockState }) => {
     };
 
     return (
-        <div>
+        <div className="story-block">
             <h3>Story Block {index + 1}</h3>
             <label>
                 Story Text:
@@ -48,7 +49,7 @@ const StoryBlockInput = ({ index, blockState }) => {
             <div>
             <label>Answers:</label>
                 {answers.get().map((answer, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
+                    <div key={i} className="answer-container">
                         <input
                             type="text"
                             value={answer}

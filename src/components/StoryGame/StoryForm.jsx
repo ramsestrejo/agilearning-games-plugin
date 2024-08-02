@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import StoryBlockInput from './StoryBlockInput';
+import './StoryForm.css';
 
 const StoryForm = () => {
     const state = useHookstate({
@@ -31,12 +32,12 @@ const StoryForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="story-form" onSubmit={handleSubmit}>
             {state.storyBlocks.map((blockState, index) => (
                 <StoryBlockInput key={index} index={index} blockState={blockState} />
             ))}
-            <button type="button" onClick={handleAddStoryBlock}>Add Story Block</button>
-            <button type="submit">Submit Story</button>
+            <button className="add-story-block-btn" type="button" onClick={handleAddStoryBlock}>Add Story Block</button>
+            <button className="submit-story-btn" type="submit">Submit Story</button>
         </form>
     );
 };
