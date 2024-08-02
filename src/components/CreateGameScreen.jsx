@@ -25,6 +25,16 @@ const CreateGameScreen = () => {
     currentPage.set(index);
   };
 
+  const handleArrowClick = (direction) => {
+    const totalPages = Math.ceil(gameType.get().length / 2);
+    let newPage = currentPage.get() + (direction === 'left' ? -1 : 1);
+
+    if (newPage < 0) newPage = totalPages - 1;
+    if (newPage >= totalPages) newPage = 0;
+
+    currentPage.set(newPage);
+  };
+
   const cardsPerPage = 2;
   const totalPages = Math.ceil(gameType.get().length / cardsPerPage);
 
@@ -42,6 +52,11 @@ const CreateGameScreen = () => {
             ))}
           </div>
         </div>
+        <div className="pagination-container">
+        <div
+          className="arrow arrow-left"
+          onClick={() => handleArrowClick('left')}
+        />
         <div className="pagination">
           {[...Array(totalPages).keys()].map(index => (
             <div
@@ -50,6 +65,11 @@ const CreateGameScreen = () => {
               onClick={() => handleDotClick(index)}
             />
           ))}
+        </div>
+        <div
+          className="arrow arrow-right"
+          onClick={() => handleArrowClick('right')}
+        />
         </div>
       </div>
     </div>

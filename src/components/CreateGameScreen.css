@@ -42,10 +42,18 @@ html, body {
      transition: transform 0.5s ease-in-out;
      width: 200%; 
    }
+
+   .pagination-container {
+     display: flex;
+     align-items: center;
+     position: absolute;
+     bottom: 10px;
+   }
    
    .pagination {
      display: flex;
      justify-content: center;
+     align-items: center;
      margin-top: 5px;
    }
    
@@ -64,3 +72,28 @@ html, body {
      border: 2px solid #ffd73c;
    }
    
+   .arrow-left {
+     margin-right: 10px;
+   }
+   
+   .arrow-right {
+     margin-left: 10px;
+   }
+   
+   .arrow::after {
+     content: '';
+     display: block;
+     width: 0;
+     height: 0;
+     border-style: solid;
+   }
+   
+   .arrow-left::after {
+     border-width: 15px 20px 15px 0;
+     border-color: transparent #fff transparent transparent;
+   }
+   
+   .arrow-right::after {
+     border-width: 15px 0 15px 20px;
+     border-color: transparent transparent transparent #fff;
+   }
