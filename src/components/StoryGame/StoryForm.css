@@ -10,9 +10,8 @@
  .story-block {
      margin-bottom: 20px;
      padding: 10px;
-     border: 2px solid #ffd73c;
      border-radius: 8px;
-     background-color: #ffffff;
+     background-color: #ffd73c;
  }
  
  .story-block h3 {
@@ -39,7 +38,7 @@
  }
  
  .story-block button {
-     background-color: #ffd73c;
+     background-color: #e6c035;
      border: none;
      padding: 8px 12px;
      border-radius: 4px;
@@ -50,7 +49,7 @@
  }
  
  .story-block button:hover {
-     background-color: #e6c035;
+     background-color: #ceab2a;
  }
  
  .add-story-block-btn,
