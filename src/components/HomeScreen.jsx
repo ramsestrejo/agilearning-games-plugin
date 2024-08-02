@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import { useNavigate } from 'react-router-dom';
-import { gameTypeState } from '../state/gameTypeState.jsx';
 import './HomeScreen.css';
 
 const HomeScreen = () => {

@@ -1,15 +1,13 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
-import { gameCodeState } from '../state/gameCodeState.jsx';
 import './JoinGameScreen.css';
 
 const JoinGameScreen = () => {
-     const gameCode = useHookstate(gameCodeState);
      const [username, setDisplayName] = React.useState('');
 
      const handleJoin = () => {
           // placeholder logic for joining a game
-          console.log(`Join a game using a code: ${gameCode.get()} and username: ${username}`);
+          // console.log(`Join a game using a code: ${gameCode.get()} and username: ${username}`);
      };
 
      return (
@@ -17,12 +15,12 @@ const JoinGameScreen = () => {
           <div className="join-game-card">
                <h1>Join a Game</h1>
                <div className="join-form">
-                    <input
+                    {/* <input
                          type="text"
                          placeholder="Enter a Game Code"
                          value={gameCode.get()}
                          onChange={(e) => gameCode.set(e.target.value)}
-                    />
+                    /> */}
                     <input
                          type="text"
                          placeholder="Enter a Display Name"
