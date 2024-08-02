@@ -74,10 +74,12 @@ html, body {
    
    .arrow-left {
      margin-right: 10px;
+     cursor: pointer;
    }
    
    .arrow-right {
      margin-left: 10px;
+     cursor: pointer;
    }
    
    .arrow::after {
@@ -89,11 +91,11 @@ html, body {
    }
    
    .arrow-left::after {
-     border-width: 15px 20px 15px 0;
-     border-color: transparent #fff transparent transparent;
+     border-width: 10px 15px 10px 0;
+     border-color: transparent #f0f0f0 transparent transparent;
    }
    
    .arrow-right::after {
-     border-width: 15px 0 15px 20px;
-     border-color: transparent transparent transparent #fff;
+     border-width: 10px 0 10px 15px;
+     border-color: transparent transparent transparent #f0f0f0;
    }
