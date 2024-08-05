@@ -5,7 +5,7 @@ import JoinGameScreen from './components/JoinGameScreen.jsx';
 import CreateGameScreen from './components/CreateGameScreen.jsx';
 import QuizForm from './components/QuizGame/QuizForm.jsx';
 import StoryForm from './components/StoryGame/StoryForm.jsx';
-import CreationSuccessPage from './CreationSuccessPage';
+//  import CreationSuccessPage from './CreationSuccessPage';
 
 
 const App = () => {
