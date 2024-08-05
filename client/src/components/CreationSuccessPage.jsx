@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-const SuccessPage = () => {
+const CreationSuccessPage = () => {
 //     const { gameCode } = useParams();
 
     return (
@@ -13,4 +13,4 @@ const SuccessPage = () => {
     );
 };
 
-export default SuccessPage;
+export default CreationSuccessPage;
