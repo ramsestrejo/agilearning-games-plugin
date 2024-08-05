@@ -2,6 +2,7 @@ import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import QuizBlockInput from './QuizBlockInput';
 import './QuizForm.css';
+import { useNavigate } from 'react-router-dom';
 
 const QuizForm = () => {
     const state = useHookstate({
