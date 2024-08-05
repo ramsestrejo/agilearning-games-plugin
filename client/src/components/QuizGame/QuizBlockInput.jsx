@@ -1,5 +1,5 @@
 import React from 'react';
-//import './QuizForm.css';
+import './QuizForm.css';
 
 const QuizBlockInput = ({ index, blockState }) => {
     const questionText = blockState.questionText;
@@ -30,7 +30,7 @@ const QuizBlockInput = ({ index, blockState }) => {
     };
 
     return (
-        <div className="story-block">
+        <div className="quiz-block">
             <h3>Question Block {index + 1}</h3>
             <label>
                 Question:

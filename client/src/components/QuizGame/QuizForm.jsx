@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import QuizBlockInput from './QuizBlockInput';
-//import './QuizForm.css';
+import './QuizForm.css';
 
 const QuizForm = () => {
     const state = useHookstate({
@@ -30,12 +30,12 @@ const QuizForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="quiz-form" onSubmit={handleSubmit}>
             {state.questions.map((questionState, index) => (
                 <QuizBlockInput key={index} index={index} blockState={questionState} />
             ))}
-            <button type="button" onClick={handleAddQuestion}>Add Question</button>
-            <button type="submit">Submit Quiz</button>
+            <button className="add-question-btn" type="button" onClick={handleAddQuestion}>Add Question</button>
+            <button className="submit-quiz-btn" type="submit">Submit Quiz</button>
         </form>
     );
 };
