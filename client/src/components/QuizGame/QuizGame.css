@@ -1,6 +1,6 @@
 .quiz-game {
      font-family: Arial, Helvetica, sans-serif;
-     background-color: #ffd73c;
+     background-color: #4cc7bd;
      padding: 20px;
      max-width: 600px;
      margin: auto;
@@ -10,7 +10,20 @@
      display: flex;
      flex-direction: column;
  }
+
+ .question-section {
+     background-color: #ffd73c;
+     padding: 15px;
+     border-radius: 8px;
+     margin-bottom: 20px;
+ }
  
+ .answers-section {
+     background-color: #ffff;
+     padding: 15px;
+     border-radius: 8px;
+ }
+
  .answers-grid {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
@@ -26,4 +39,20 @@
  .answers-grid input {
      margin-right: 10px;
  }
+
+ button {
+     background-color: #ffd73c;
+     border: none;
+     padding: 8px 12px;
+     border-radius: 4px;
+     cursor: pointer;
+     margin-top: 10px;
+     font-family: inherit;
+     transition: background-color 0.3s ease;
+ }
+ 
+ button:hover {
+     background-color: #e6c035;
+ }
+
  

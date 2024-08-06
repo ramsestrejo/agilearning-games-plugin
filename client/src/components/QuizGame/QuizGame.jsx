@@ -32,7 +32,10 @@ const QuizGame = () => {
         <div className="quiz-game">
             <h1>Quiz Game</h1>
             <form onSubmit={handleSubmit}>
+               <div className="question-section">
                     <h2>{state.questionText.get()}</h2>
+               </div>
+               <div className="answers-section">
                     <div className="answers-grid">
                     {state.answers.get().map((answer, index) => (
                         <div key={index}>
@@ -48,6 +51,7 @@ const QuizGame = () => {
                             </label>
                         </div>
                     ))}
+                </div>
                 </div>
                 <button type="submit">Submit Answer</button>
             </form>
