@@ -29,6 +29,7 @@ const StoryGame = () => {
        currentSegmentIndex: 0,
        selectedAnswer: '',
        isSubmitted: false,
+       view: 'story',
        storyData: storyData
      });
    
@@ -41,56 +42,69 @@ const StoryGame = () => {
      const isCorrect = state.selectedAnswer.get() === currentSegment.correctAnswer;
    
      const handleAnswerClick = (answer) => {
-       if (!state.isSubmitted.get()) {
-         state.selectedAnswer.set(answer);
-       }
-     };
+          if (!state.isSubmitted.get() && state.view.get() === 'question') {
+            state.selectedAnswer.set(answer);
+          }
+        };
 
-     const handleSubmit = (event) => {
+        const handleSubmit = (event) => {
           event.preventDefault();
-          state.isSubmitted.set(true);
+          if (state.view.get() === 'question') {
+            state.isSubmitted.set(true);
       
-          setTimeout(() => {
-            const nextIndex = state.currentSegmentIndex.get() + 1;
-            if (nextIndex < state.storyData.get().length) {
-              state.currentSegmentIndex.set(nextIndex);
-            }
-            state.isSubmitted.set(false);
-          }, 2000);
+            setTimeout(() => {
+              const nextIndex = state.currentSegmentIndex.get() + 1;
+              if (nextIndex < state.storyData.get().length) {
+                state.currentSegmentIndex.set(nextIndex);
+                state.view.set('story');
+              }
+              state.isSubmitted.set(false);
+            }, 2000);
+          }
+        };
+
+        const handleContinue = () => {
+          state.view.set('question');
         };
 
         return (
           <div className="story-game">
             <form onSubmit={handleSubmit} className="storygame-form">
-              <div className="story-section">
-                <p>{currentSegment.storyText}</p>
-              </div>
-              <div className="question-section">
-                <h2>{currentSegment.questionText}</h2>
-                <div className="answers-grid">
-                  {currentSegment.answers.map((answer, index) => {
-                    const isSelected = state.selectedAnswer.get() === answer;
-                    return (
-                      <button
-                        key={index}
-                        className={`answer-button ${
-                          isSelected
-                            ? (state.isSubmitted.get() ? (isCorrect ? 'correct' : 'incorrect') : 'selected')
-                            : ''
-                        }`}
-                        onClick={() => handleAnswerClick(answer)}
-                        type="button"
-                        disabled={state.isSubmitted.get()}
-                      >
-                        {answer}
-                      </button>
-                    );
-                  })}
+              {state.view.get() === 'story' ? (
+                <div className="story-section">
+                  <p>{currentSegment.storyText}</p>
+                  <button type="button" className="continue-button" onClick={handleContinue}>
+                    Continue
+                  </button>
                 </div>
-                <button type="submit" className="submit-button" disabled={state.isSubmitted.get()}>
-                  Submit Answer
-                </button>
-              </div>
+              ) : (
+                <div className="question-section">
+                  <h2>{currentSegment.questionText}</h2>
+                  <div className="answers-grid">
+                    {currentSegment.answers.map((answer, index) => {
+                      const isSelected = state.selectedAnswer.get() === answer;
+                      return (
+                        <button
+                          key={index}
+                          className={`answer-button ${
+                            isSelected
+                              ? (state.isSubmitted.get() ? (isCorrect ? 'correct' : 'incorrect') : 'selected')
+                              : ''
+                          }`}
+                          onClick={() => handleAnswerClick(answer)}
+                          type="button"
+                          disabled={state.isSubmitted.get()}
+                        >
+                          {answer}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <button type="submit" className="submit-button" disabled={state.isSubmitted.get()}>
+                    Submit Answer
+                  </button>
+                </div>
+              )}
             </form>
           </div>
         );
