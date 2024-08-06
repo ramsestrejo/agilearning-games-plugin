@@ -2,6 +2,7 @@ import React from 'react';
 import { useHookstate } from '@hookstate/core';
 import StoryBlockInput from './StoryBlockInput';
 import './StoryForm.css';
+import { useNavigate } from 'react-router-dom';
 
 const StoryForm = () => {
     const state = useHookstate({
@@ -15,11 +16,15 @@ const StoryForm = () => {
         ]
     });
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const storyData = state.get();
         console.log('Story Data:', storyData);
         // logic to submit story data
+        // temporarily adding route for the story game from here to test and add styling
+        navigate('/story-game');
     };
 
     const handleAddStoryBlock = () => {
