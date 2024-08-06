@@ -57,28 +57,26 @@
      margin-bottom: 20px;
  }
  
- .answers-grid label {
-     display: flex;
-     align-items: center;
- }
- 
- .answers-grid input {
-     margin-right: 10px;
- }
-
- button {
-     background-color: #ffd73c;
+ .answer-button {
+     background-color: #ddd;
      border: none;
-     padding: 8px 12px;
-     border-radius: 4px;
+     padding: 15px;
+     border-radius: 8px;
      cursor: pointer;
-     margin-top: 10px;
      font-family: inherit;
      transition: background-color 0.3s ease;
+     text-align: center;
+     font-size: 18px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
  }
  
- button:hover {
+ .answer-button:hover {
      background-color: #e6c035;
+ }
+ 
+ .answer-button.selected {
+     background-color: #ffdd99;
+     border: 2px solid #ffd73c;
  }
 
  

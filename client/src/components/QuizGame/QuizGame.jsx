@@ -17,11 +17,11 @@ const QuizGame = () => {
         selectedAnswer: ''
     });
 
-    const [submitted, setSubmitted] = useState(false);
+     const [submitted, setSubmitted] = useState(false);
 
-    const handleAnswerChange = (event) => {
-        state.selectedAnswer.set(event.target.value);
-    };
+     const handleAnswerClick = (answer) => {
+          state.selectedAnswer.set(answer);
+     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,19 +37,15 @@ const QuizGame = () => {
                <div className="answers-section">
                     <div className="answers-grid">
                     {state.answers.get().map((answer, index) => (
-                        <div key={index}>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="answer"
-                                    value={answer}
-                                    checked={state.selectedAnswer.get() === answer}
-                                    onChange={handleAnswerChange}
-                                />
+                            <button
+                                key={index}
+                                className={`answer-button ${state.selectedAnswer.get() === answer ? 'selected' : ''}`}
+                                onClick={() => handleAnswerClick(answer)}
+                                type="button"
+                            >
                                 {answer}
-                            </label>
-                        </div>
-                    ))}
+                            </button>
+                        ))}
                 </div>
                 <button type="submit">Submit Answer</button>
                 </div>
