@@ -14,19 +14,22 @@ const QuizGame = () => {
         questionText: initialState.questionText,
         answers: initialState.answers,
         correctAnswer: initialState.correctAnswer,
-        selectedAnswer: ''
+        selectedAnswer: '',
+        isSubmitted: false
     });
 
-     const [submitted, setSubmitted] = useState(false);
-
      const handleAnswerClick = (answer) => {
+          if (!state.isSubmitted.get()) {
           state.selectedAnswer.set(answer);
+          }
      };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setSubmitted(true);
+        state.isSubmitted.set(true);
     };
+
+    const isCorrect = state.selectedAnswer.get() === state.correctAnswer.get();
 
     return (
         <div className="quiz-game">
@@ -36,30 +39,30 @@ const QuizGame = () => {
                </div>
                <div className="answers-section">
                     <div className="answers-grid">
-                    {state.answers.get().map((answer, index) => (
-                            <button
-                                key={index}
-                                className={`answer-button ${state.selectedAnswer.get() === answer ? 'selected' : ''}`}
-                                onClick={() => handleAnswerClick(answer)}
-                                type="button"
-                            >
-                                {answer}
-                            </button>
-                        ))}
-                </div>
-                <button type="submit">Submit Answer</button>
+                    {state.answers.get().map((answer, index) => {
+                            const isSelected = state.selectedAnswer.get() === answer;
+                            const isCorrect = state.correctAnswer.get() === answer;
+
+                            return (
+                                <button
+                                    key={index}
+                                    className={`answer-button ${
+                                        isSelected
+                                            ? (state.isSubmitted.get() ? (isCorrect ? 'correct' : 'incorrect') : 'selected')
+                                            : ''
+                                    }`}
+                                    onClick={() => handleAnswerClick(answer)}
+                                    type="button"
+                                    disabled={state.isSubmitted.get()}
+                                >
+                                    {answer}
+                                </button>
+                            );
+                        })}
+                    </div>
+                    <button type="submit" className="submit-button" disabled={state.isSubmitted.get()}>Submit Answer</button>
                 </div>
             </form>
-            {submitted && (
-                <div>
-                    <h3>Result:</h3>
-                    {state.selectedAnswer.get() === state.correctAnswer.get() ? (
-                        <p>Correct!</p>
-                    ) : (
-                        <p>Incorrect.</p>
-                    )}
-                </div>
-            )}
         </div>
     );
 };
