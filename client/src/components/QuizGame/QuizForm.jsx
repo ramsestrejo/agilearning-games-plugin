@@ -15,11 +15,15 @@ const QuizForm = () => {
         ]
     });
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const quizData = state.get();
         console.log('Quiz Data:', quizData);
         // logic to submit quiz data
+        // temporarily adding route for the quiz game from here to test and add styling
+        navigate('/quiz-game');
     };
 
     const handleAddQuestion = () => {
