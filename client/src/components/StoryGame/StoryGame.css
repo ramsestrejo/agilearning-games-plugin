@@ -1,0 +1,124 @@
+.story-game {
+     font-family: Arial, Helvetica, sans-serif;
+     background-color: #4cc7bd;
+     padding: 0;
+     margin: 0;
+     height: 100vh;
+     display: flex;
+     flex-direction: column;
+     position: relative;
+   }
+   
+   .storygame-form {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     padding: 0 15px;
+     box-sizing: border-box;
+     justify-content: center;
+   }
+   
+   .story-section {
+     background-color: #ffd73c;
+     padding: 15px;
+     border-radius: 8px;
+     margin: 0 auto 20px;
+     width: 50%;
+     box-sizing: border-box;
+     align-self: center;
+     text-align: center;
+   }
+   
+   .question-section {
+     background-color: #ffff;
+     padding: 15px;
+     border-radius: 8px;
+     width: calc(100% - 30px);
+     box-sizing: border-box;
+     height: 65%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     margin-top: 20px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 20px;
+     position: relative;
+   }
+   
+   .answers-grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 30px;
+     width: 100%;
+     max-width: 1000px;
+     margin-bottom: 20px;
+   }
+   
+   .answer-button {
+     background-color: #ddd;
+     border: none;
+     padding: 30px;
+     border-radius: 8px;
+     cursor: pointer;
+     font-family: inherit;
+     transition: background-color 0.3s ease;
+     text-align: center;
+     font-size: 18px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     width: 100%;
+   }
+   
+   .answer-button.correct {
+     background-color: #4caf50;
+     color: white;
+   }
+   
+   .answer-button.incorrect {
+     background-color: #f44336;
+     color: white;
+   }
+   
+   .answer-button:hover {
+     background-color: #e6c035;
+   }
+   
+   .answer-button.selected {
+     background-color: #ffdd99;
+     border: 2px solid #ffd73c;
+   }
+   
+   .submit-button {
+     position: absolute;
+     bottom: 15px;
+     right: 15px;
+     padding: 15px 30px;
+     background-color: #ffd73c;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-family: inherit;
+     font-size: 18px;
+     transition: background-color 0.3s ease;
+   }
+   
+   .submit-button:hover {
+     background-color: #e6c035;
+   }
+   
+   .continue-button {
+     background-color: #ffd73c;
+     border: none;
+     padding: 15px 30px;
+     border-radius: 8px;
+     cursor: pointer;
+     font-family: inherit;
+     font-size: 18px;
+     transition: background-color 0.3s ease;
+     margin-top: 20px;
+   }
+   
+   .continue-button:hover {
+     background-color: #e6c035;
+   }
