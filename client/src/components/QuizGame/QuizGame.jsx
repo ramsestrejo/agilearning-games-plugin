@@ -30,8 +30,7 @@ const QuizGame = () => {
 
     return (
         <div className="quiz-game">
-            <h1>Quiz Game</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="quizgame-form">
                <div className="question-section">
                     <h2>{state.questionText.get()}</h2>
                </div>
@@ -52,8 +51,8 @@ const QuizGame = () => {
                         </div>
                     ))}
                 </div>
-                </div>
                 <button type="submit">Submit Answer</button>
+                </div>
             </form>
             {submitted && (
                 <div>
