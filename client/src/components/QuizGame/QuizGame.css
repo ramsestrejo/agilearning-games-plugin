@@ -1,0 +1,29 @@
+.quiz-game {
+     font-family: Arial, Helvetica, sans-serif;
+     background-color: #ffd73c;
+     padding: 20px;
+     max-width: 600px;
+     margin: auto;
+ }
+ 
+ .quiz-game form {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .answers-grid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 10px;
+     margin-bottom: 20px;
+ }
+ 
+ .answers-grid label {
+     display: flex;
+     align-items: center;
+ }
+ 
+ .answers-grid input {
+     margin-right: 10px;
+ }
+ 

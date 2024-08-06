@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHookstate } from '@hookstate/core';
-// File not yet created
-// import './QuizGame.css';
+import './QuizGame.css';
 
 //adding temporary data just to test and add styling to game
 const initialState = {
@@ -33,8 +32,8 @@ const QuizGame = () => {
         <div className="quiz-game">
             <h1>Quiz Game</h1>
             <form onSubmit={handleSubmit}>
-                <div>
                     <h2>{state.questionText.get()}</h2>
+                    <div className="answers-grid">
                     {state.answers.get().map((answer, index) => (
                         <div key={index}>
                             <label>
