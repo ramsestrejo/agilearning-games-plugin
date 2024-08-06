@@ -29,7 +29,7 @@
      text-align: center;
    }
    
-   .question-section {
+   .storyquestion-section {
      background-color: #ffff;
      padding: 15px;
      border-radius: 8px;
@@ -47,7 +47,7 @@
      position: relative;
    }
    
-   .answers-grid {
+   .storyanswers-grid {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
      gap: 30px;
@@ -56,7 +56,7 @@
      margin-bottom: 20px;
    }
    
-   .answer-button {
+   .storyanswer-button {
      background-color: #ddd;
      border: none;
      padding: 30px;
@@ -70,26 +70,26 @@
      width: 100%;
    }
    
-   .answer-button.correct {
+   .storyanswer-button.correct {
      background-color: #4caf50;
      color: white;
    }
    
-   .answer-button.incorrect {
+   .storyanswer-button.incorrect {
      background-color: #f44336;
      color: white;
    }
    
-   .answer-button:hover {
+   .storyanswer-button:hover {
      background-color: #e6c035;
    }
    
-   .answer-button.selected {
+   .storyanswer-button.selected {
      background-color: #ffdd99;
      border: 2px solid #ffd73c;
    }
    
-   .submit-button {
+   .storysubmit-button {
      position: absolute;
      bottom: 15px;
      right: 15px;
@@ -103,11 +103,11 @@
      transition: background-color 0.3s ease;
    }
    
-   .submit-button:hover {
+   .storysubmit-button:hover {
      background-color: #e6c035;
    }
    
-   .continue-button {
+   .storycontinue-button {
      background-color: #ffd73c;
      border: none;
      padding: 15px 30px;
@@ -119,6 +119,6 @@
      margin-top: 20px;
    }
    
-   .continue-button:hover {
+   .storycontinue-button:hover {
      background-color: #e6c035;
    }

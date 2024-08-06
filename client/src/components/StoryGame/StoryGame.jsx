@@ -73,20 +73,20 @@ const StoryGame = () => {
               {state.view.get() === 'story' ? (
                 <div className="story-section">
                   <p>{currentSegment.storyText}</p>
-                  <button type="button" className="continue-button" onClick={handleContinue}>
+                  <button type="button" className="storycontinue-button" onClick={handleContinue}>
                     Continue
                   </button>
                 </div>
               ) : (
-                <div className="question-section">
+                <div className="storyquestion-section">
                   <h2>{currentSegment.questionText}</h2>
-                  <div className="answers-grid">
+                  <div className="storyanswers-grid">
                     {currentSegment.answers.map((answer, index) => {
                       const isSelected = state.selectedAnswer.get() === answer;
                       return (
                         <button
                           key={index}
-                          className={`answer-button ${
+                          className={`storyanswer-button ${
                             isSelected
                               ? (state.isSubmitted.get() ? (isCorrect ? 'correct' : 'incorrect') : 'selected')
                               : ''
@@ -100,7 +100,7 @@ const StoryGame = () => {
                       );
                     })}
                   </div>
-                  <button type="submit" className="submit-button" disabled={state.isSubmitted.get()}>
+                  <button type="submit" className="storysubmit-button" disabled={state.isSubmitted.get()}>
                     Submit Answer
                   </button>
                 </div>
