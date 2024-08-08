@@ -1,6 +1,9 @@
 import express from "express";
 import path from 'path';
 import { fileURLToPath } from "url";
+import dotenv from 'dotenv';
+import db from './dbconnection.js'
+dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
