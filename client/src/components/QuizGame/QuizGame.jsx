@@ -26,6 +26,7 @@ const QuizGame = () => {
           currentQuestionIndex: 0,
           selectedAnswer: '',
           isSubmitted: false,
+          score: 0,
           quizData: quizData
      });
 
@@ -46,6 +47,10 @@ const QuizGame = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         state.isSubmitted.set(true);
+
+        if (isCorrect) {
+            state.score.set(state.score.get() + 1);
+        }
 
         setTimeout(() => {
           const nextIndex = state.currentQuestionIndex.get() + 1;
@@ -88,6 +93,9 @@ const QuizGame = () => {
                     </button>
                 </div>
             </form>
+            <div className="score-section">
+                <h3>Score: {state.score.get()}</h3>
+            </div>
         </div>
     );
 };
