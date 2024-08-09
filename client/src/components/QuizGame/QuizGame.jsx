@@ -115,13 +115,13 @@ const QuizGame = () => {
                             );
                         })}
                     </div>
-                </div>
-            <div className="timer-section">
+                    <div className="timer-section">
                 <h3>Time Left: {timer}s</h3>
             </div>
             <div className="score-section">
                 <h3>Score: {state.score.get()}</h3>
             </div>
+                </div>
             </div>
         </div>
     );
