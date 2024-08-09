@@ -100,9 +100,14 @@ const QuizGame = () => {
     return (
         <div className="quiz-game">
             <div className="quizgame-form">
+            <div className="question-timer-wrapper">
                <div className="question-section">
                <h2>{currentQuestion.questionText}</h2>
                </div>
+               <div className="timer-section">
+                <h3>{timer}s</h3>
+                </div>
+                </div>
                <div className="answers-section">
                     <div className="answers-grid">
                     {currentQuestion.answers.map((answer, index) => {
@@ -124,9 +129,6 @@ const QuizGame = () => {
                             );
                         })}
                     </div>
-                    <div className="timer-section">
-                <h3>Time Left: {timer}s</h3>
-            </div>
             <div className="score-section">
                 <h3>Score: {state.score.get()}</h3>
             </div>

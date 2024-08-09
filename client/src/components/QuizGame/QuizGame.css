@@ -19,11 +19,19 @@
     justify-content: space-between;
  }
 
+ .question-timer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+    margin-bottom: 20px;
+}
+
  .question-section {
      background-color: #ffd73c;
      padding: 15px;
      border-radius: 8px;
-     margin: 0 auto 20px;
+     margin: 0;
      width: 50%;
      box-sizing: border-box;
      align-self: center;
@@ -34,6 +42,11 @@
      align-items: center;
      text-align: center;
  }
+
+ .timer-section {
+    margin-left: 4em;
+    font-size: 1.2em;
+}
  
  .answers-section {
      background-color: #ffff;
