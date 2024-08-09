@@ -55,38 +55,42 @@ const QuizGame = () => {
      const isCorrect = state.selectedAnswer.get() === currentQuestion.correctAnswer;
 
      const handleAnswerClick = (answer) => {
-          if (!state.isSubmitted.get()) {
-          state.selectedAnswer.set(answer);
-          }
-     };
+        if (!state.isSubmitted.get()) {
+            state.selectedAnswer.set(answer);
+            state.isSubmitted.set(true);
+            
+            if (answer === currentQuestion.correctAnswer) {
+                state.score.set(state.score.get() + 1);
+            }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        state.isSubmitted.set(true);
-
-        if (isCorrect) {
-            state.score.set(state.score.get() + 1);
+            setTimeout(() => {
+                const nextIndex = state.currentQuestionIndex.get() + 1;
+                if (nextIndex < state.quizData.get().length) {
+                    state.currentQuestionIndex.set(nextIndex);
+                }
+                state.isSubmitted.set(false);
+            }, 2000);
         }
-
-        setTimeout(() => {
-          const nextIndex = state.currentQuestionIndex.get() + 1;
-          if (nextIndex < state.quizData.get().length) {
-              state.currentQuestionIndex.set(nextIndex);
-          }
-          state.isSubmitted.set(false);
-      }, 2000);
-  };
+    };
 
   const handleTimerExpire = () => {
     if (!state.isSubmitted.get()) {
         state.selectedAnswer.set('');
         state.isSubmitted.set(true);
+
+        setTimeout(() => {
+            const nextIndex = state.currentQuestionIndex.get() + 1;
+            if (nextIndex < state.quizData.get().length) {
+                state.currentQuestionIndex.set(nextIndex);
+            }
+            state.isSubmitted.set(false);
+        }, 2000);
     }
 };
 
     return (
         <div className="quiz-game">
-            <form onSubmit={handleSubmit} className="quizgame-form">
+            <div className="quizgame-form">
                <div className="question-section">
                <h2>{currentQuestion.questionText}</h2>
                </div>
@@ -111,16 +115,13 @@ const QuizGame = () => {
                             );
                         })}
                     </div>
-                    <button type="submit" className="submit-button" disabled={state.isSubmitted.get()}>
-                        Submit Answer
-                    </button>
                 </div>
-            </form>
             <div className="timer-section">
                 <h3>Time Left: {timer}s</h3>
             </div>
             <div className="score-section">
                 <h3>Score: {state.score.get()}</h3>
+            </div>
             </div>
         </div>
     );
