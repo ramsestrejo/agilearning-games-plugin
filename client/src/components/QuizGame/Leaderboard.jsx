@@ -19,8 +19,16 @@ const Leaderboard = ({ score, resetGame }) => {
      return (
           <div className="leaderboard">
             <h1>Leaderboard</h1>
-            <ul>
-            {sortedLeaderboardData.map((entry, index) => (
+            <div className="top-scores">
+                {sortedLeaderboardData.slice(0, 3).map((entry, index) => (
+                    <div className="top-score" key={index}>
+                        <h2>{entry.playerName}</h2>
+                        <p>{entry.score}</p>
+                    </div>
+                ))}
+            </div>
+            <ul className="rest-of-scores">
+                {sortedLeaderboardData.slice(3).map((entry, index) => (
                     <li key={index}>
                         {entry.playerName}: {entry.score}
                     </li>
