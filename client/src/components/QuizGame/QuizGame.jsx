@@ -24,6 +24,7 @@ const quizData = [
 
 const QuizGame = () => {
     const [timer, setTimer] = useState(30);
+    const [questionStartTime, setQuestionStartTime] = useState(Date.now());
     const state = useHookstate({
         currentQuestionIndex: 0,
         selectedAnswer: '',
@@ -40,6 +41,8 @@ const QuizGame = () => {
         state.isSubmitted.set(false);
 
         setTimer(30);
+        setQuestionStartTime(Date.now());
+
         const timerId = setInterval(() => {
             setTimer((prevTimer) => {
                 if (prevTimer === 1) {
@@ -62,8 +65,11 @@ const QuizGame = () => {
             state.selectedAnswer.set(answer);
             state.isSubmitted.set(true);
             
+            let bonusScore = 0;
             if (answer === currentQuestion.correctAnswer) {
-                state.score.set(state.score.get() + 1);
+                const timeLeft = timer;
+                bonusScore = Math.max(0, timeLeft * 10);
+                state.score.set(state.score.get() + bonusScore);
             }
 
             setTimeout(() => {
