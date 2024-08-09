@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHookstate } from '@hookstate/core';
 import './QuizGame.css';
+import { useNavigate } from 'react-router-dom';
 
 //adding temporary data just to test and add styling to game
 const quizData = [
@@ -30,6 +31,8 @@ const QuizGame = () => {
         score: 0,
         quizData: quizData
     });
+
+    const navigate = useNavigate();
 
      useEffect(() => {
         const currentQuestionIndex = state.currentQuestionIndex.get();
@@ -68,6 +71,9 @@ const QuizGame = () => {
                 if (nextIndex < state.quizData.get().length) {
                     state.currentQuestionIndex.set(nextIndex);
                 }
+                else {
+                    navigate('/leaderboard', { state: { score: state.score.get() } });
+                }
                 state.isSubmitted.set(false);
             }, 2000);
         }
@@ -82,6 +88,9 @@ const QuizGame = () => {
             const nextIndex = state.currentQuestionIndex.get() + 1;
             if (nextIndex < state.quizData.get().length) {
                 state.currentQuestionIndex.set(nextIndex);
+            }
+            else {
+                navigate('/leaderboard', { state: { score: state.score.get() } });
             }
             state.isSubmitted.set(false);
         }, 2000);
