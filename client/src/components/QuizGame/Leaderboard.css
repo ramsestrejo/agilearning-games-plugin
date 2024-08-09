@@ -18,14 +18,6 @@
      margin-bottom: 20px;
  }
  
- .top-score {
-     background-color: #ffd73c;
-     padding: 10px;
-     border-radius: 8px;
-     width: 30%;
-     text-align: center;
- }
- 
  .top-score h2 {
      margin: 0;
  }
@@ -38,14 +30,29 @@
  
  .top-score-left {
      order: 1;
+     background-color: #ffd73c;
+     padding: 10px;
+     border-radius: 8px;
+     width: 30%;
+     text-align: center;
  }
  
  .top-score-center {
      order: 2;
+     background-color: #ffd73c;
+     padding: 10px;
+     border-radius: 8px;
+     width: 30%;
+     text-align: center;
  }
  
  .top-score-right {
      order: 3;
+     background-color: #ffd73c;
+     padding: 10px;
+     border-radius: 8px;
+     width: 30%;
+     text-align: center;
  }
  
  .rest-of-scores {
