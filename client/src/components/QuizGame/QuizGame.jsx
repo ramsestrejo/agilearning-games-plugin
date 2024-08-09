@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHookstate } from '@hookstate/core';
 import './QuizGame.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+
+// const fetchQuizData = async (gameCode) => {
 
 //adding temporary data just to test and add styling to game
 const quizData = [

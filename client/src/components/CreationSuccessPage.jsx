@@ -1,8 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const CreationSuccessPage = ({ gameCode }) => {
+const CreationSuccessPage = () => {
+    const location = useLocation();
     const navigate = useNavigate();
+
+    const gameCode = location.state?.gameCode;
 
     const handlePlayNow = () => {
         navigate('/join-game');

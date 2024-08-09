@@ -4,6 +4,10 @@ import QuizBlockInput from './QuizBlockInput';
 import './QuizForm.css';
 import { useNavigate } from 'react-router-dom';
 
+const generateGameCode = () => {
+    return Math.random().toString(36).slice(2, 8).toUpperCase();
+};
+
 const QuizForm = () => {
     const state = useHookstate({
         questions: [
@@ -21,9 +25,12 @@ const QuizForm = () => {
         event.preventDefault();
         const quizData = state.get();
         console.log('Quiz Data:', quizData);
-        // logic to submit quiz data
-        // temporarily adding route for the quiz game from here to test and add styling
-        navigate('/quiz-game');
+        
+        const gameCode = generateGameCode();
+
+        // logic here for storing the quiz data and game code in database
+
+        navigate('/creation-success', { state: { gameCode } });
     };
 
     const handleAddQuestion = () => {
