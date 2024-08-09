@@ -22,18 +22,34 @@ const quizData = [
  ];
 
 const QuizGame = () => {
-     const state = useHookstate({
-          currentQuestionIndex: 0,
-          selectedAnswer: '',
-          isSubmitted: false,
-          score: 0,
-          quizData: quizData
-     });
+    const [timer, setTimer] = useState(30);
+    const state = useHookstate({
+        currentQuestionIndex: 0,
+        selectedAnswer: '',
+        isSubmitted: false,
+        score: 0,
+        quizData: quizData
+    });
 
      useEffect(() => {
-          state.selectedAnswer.set('');
-          state.isSubmitted.set(false);
-      }, [state.currentQuestionIndex.get()]);
+        const currentQuestionIndex = state.currentQuestionIndex.get();
+        state.selectedAnswer.set('');
+        state.isSubmitted.set(false);
+
+        setTimer(30);
+        const timerId = setInterval(() => {
+            setTimer((prevTimer) => {
+                if (prevTimer === 1) {
+                    handleTimerExpire();
+                    clearInterval(timerId);
+                    return 0;
+                }
+                return prevTimer - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timerId);
+    }, [state.currentQuestionIndex.get()]);
 
      const currentQuestion = state.quizData.get()[state.currentQuestionIndex.get()];
      const isCorrect = state.selectedAnswer.get() === currentQuestion.correctAnswer;
@@ -60,6 +76,13 @@ const QuizGame = () => {
           state.isSubmitted.set(false);
       }, 2000);
   };
+
+  const handleTimerExpire = () => {
+    if (!state.isSubmitted.get()) {
+        state.selectedAnswer.set('');
+        state.isSubmitted.set(true);
+    }
+};
 
     return (
         <div className="quiz-game">
@@ -93,6 +116,9 @@ const QuizGame = () => {
                     </button>
                 </div>
             </form>
+            <div className="timer-section">
+                <h3>Time Left: {timer}s</h3>
+            </div>
             <div className="score-section">
                 <h3>Score: {state.score.get()}</h3>
             </div>
