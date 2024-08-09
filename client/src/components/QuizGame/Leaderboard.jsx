@@ -26,17 +26,17 @@ const Leaderboard = ({ score, resetGame }) => {
             <IconContext.Provider value={{ size: '2em' }}>
             <div className="top-scores">
                 <div className="top-score-left">
-                <FaStar style={{ color: '#ffdf5f' }} />
+                <FaStar style={{ color: '#ffdf5f', fontSize: '1.5em' }} />
                     <h2>{topThree[1]?.playerName}</h2>
                     <p>{topThree[1]?.score}</p>
                 </div>
                 <div className="top-score-center">
-                <FaStar style={{ color: '#fd3d7b' }} />
+                <FaStar style={{ color: '#fd3d7b', fontSize: '2em' }} />
                     <h2>{topThree[0]?.playerName}</h2>
                     <p>{topThree[0]?.score}</p>
                 </div>
                 <div className="top-score-right">
-                <FaStar style={{ color: '#ffdf5f' }} />
+                <FaStar style={{ color: '#ffdf5f', fontSize: '1.5em' }} />
                     <h2>{topThree[2]?.playerName}</h2>
                     <p>{topThree[2]?.score}</p>
                 </div>

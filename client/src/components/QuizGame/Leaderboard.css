@@ -3,7 +3,10 @@
      background-color: #f9f9f9;
      border-radius: 8px;
      padding: 20px;
-     margin: 0 auto;
+     margin-top: 2em;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 0;
      max-width: 800px;
  }
  
@@ -18,10 +21,6 @@
      margin-bottom: 20px;
  }
  
- .top-score h2 {
-     margin: 0;
- }
- 
  .top-score p {
      margin: 0;
      font-size: 1.2em;
@@ -30,16 +29,18 @@
  
  .top-score-left {
      order: 1;
-     background-color: #ffd73c;
      padding: 10px;
      border-radius: 8px;
      width: 30%;
      text-align: center;
  }
+
+ .top-score-left h2 {
+     font-size: 1.2em;
+ }
  
  .top-score-center {
      order: 2;
-     background-color: #ffd73c;
      padding: 10px;
      border-radius: 8px;
      width: 30%;
@@ -48,11 +49,14 @@
  
  .top-score-right {
      order: 3;
-     background-color: #ffd73c;
      padding: 10px;
      border-radius: 8px;
      width: 30%;
      text-align: center;
+ }
+
+ .top-score-right h2 {
+     font-size: 1.2em;
  }
  
  .second-star {

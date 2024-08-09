@@ -55,7 +55,7 @@
      background-color: #ffff;
      padding: 15px;
      border-radius: 8px;
-     width: calc(100% - 30px);
+     width: calc(100% - 4em);
      box-sizing: border-box;
      height: 65%;
      display: flex;

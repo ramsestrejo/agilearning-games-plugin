@@ -1,10 +1,10 @@
-html, body {
+.create-game-screen html, body {
      height: 100%;
      margin: 0;
      padding: 0;
    }
    
-   body {
+   .create-game-screen body {
      background-color: #4cc7bd;
    }
    
