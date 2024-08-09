@@ -13,6 +13,8 @@
  .leaderboard h1 {
      text-align: center;
      margin-bottom: 20px;
+     color: #ffd73c;
+     text-shadow: 2px 2px 4px rgba(148, 128, 128, 0.5);
  }
  
  .top-scores {
@@ -59,33 +61,6 @@
      font-size: 1.2em;
  }
  
- .second-star {
-     color: #ffdf5f;
-     font-size: 2em;
-     position: absolute;
-     top: -1.5em;
-     left: 50%;
-     transform: translateX(-50%);
- }
- 
- .first-star {
-     color: #fd3d7b;
-     font-size: 2em;
-     position: absolute;
-     top: -1.5em;
-     left: 50%;
-     transform: translateX(-50%);
- }
- 
- .third-star {
-     color: #ffdf5f;
-     font-size: 2em;
-     position: absolute;
-     top: -1.5em;
-     left: 50%;
-     transform: translateX(-50%);
- }
- 
  .rest-of-scores {
      list-style: none;
      padding: 0;
@@ -113,6 +88,23 @@
  }
  
  .restart-button:hover {
+     background-color: #e6c035;
+ }
+
+ .return-button {
+     display: block;
+     margin: 20px auto;
+     padding: 10px 20px;
+     background-color: #ffd73c;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-family: inherit;
+     font-size: 16px;
+     transition: background-color 0.3s ease;
+ }
+ 
+ .return-button:hover {
      background-color: #e6c035;
  }
  

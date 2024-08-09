@@ -2,6 +2,7 @@ import React from 'react';
 import './Leaderboard.css';
 import { FaStar } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Leaderboard = ({ score, resetGame }) => {
      // temporary data until connection to backend
@@ -19,6 +20,12 @@ const Leaderboard = ({ score, resetGame }) => {
 
      const topThree = sortedLeaderboardData.slice(0, 3);
      const remainingScores = sortedLeaderboardData.slice(3);
+
+     const navigate = useNavigate();
+
+     const handleReturnToMenu = () => {
+          navigate('/');
+      };
 
      return (
           <div className="leaderboard">
@@ -50,7 +57,7 @@ const Leaderboard = ({ score, resetGame }) => {
                 ))}
             </ul>
             <button onClick={resetGame} className="restart-button">Retry Quiz</button>
-            {/* Include button option to return to main menu */}
+            <button onClick={handleReturnToMenu} className="return-button">Main Menu</button>
           </div>
         );
       };
