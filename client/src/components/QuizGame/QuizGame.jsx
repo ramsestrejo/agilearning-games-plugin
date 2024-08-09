@@ -105,7 +105,7 @@ const QuizGame = () => {
                <h2>{currentQuestion.questionText}</h2>
                </div>
                <div className="timer-section">
-                <h3>{timer}s</h3>
+                <h3>{timer}</h3>
                 </div>
                 </div>
                <div className="answers-section">
