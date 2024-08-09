@@ -4,10 +4,9 @@
   "description": "A React plugin to add gamification elements to an LMS",
   "main": "src/main.jsx",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "build": "vite build && (cd ../server && npm install)",
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
