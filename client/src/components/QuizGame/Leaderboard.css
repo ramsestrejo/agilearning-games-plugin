@@ -55,6 +55,33 @@
      text-align: center;
  }
  
+ .second-star {
+     color: #ffdf5f;
+     font-size: 2em;
+     position: absolute;
+     top: -1.5em;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+ 
+ .first-star {
+     color: #fd3d7b;
+     font-size: 2em;
+     position: absolute;
+     top: -1.5em;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+ 
+ .third-star {
+     color: #ffdf5f;
+     font-size: 2em;
+     position: absolute;
+     top: -1.5em;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+ 
  .rest-of-scores {
      list-style: none;
      padding: 0;

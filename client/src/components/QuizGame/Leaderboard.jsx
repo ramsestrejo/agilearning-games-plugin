@@ -1,5 +1,7 @@
 import React from 'react';
 import './Leaderboard.css';
+import { FaStar } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 const Leaderboard = ({ score, resetGame }) => {
      // temporary data until connection to backend
@@ -21,20 +23,25 @@ const Leaderboard = ({ score, resetGame }) => {
      return (
           <div className="leaderboard">
             <h1>Leaderboard</h1>
+            <IconContext.Provider value={{ size: '2em' }}>
             <div className="top-scores">
                 <div className="top-score-left">
+                <FaStar style={{ color: '#ffdf5f' }} />
                     <h2>{topThree[1]?.playerName}</h2>
                     <p>{topThree[1]?.score}</p>
                 </div>
                 <div className="top-score-center">
+                <FaStar style={{ color: '#fd3d7b' }} />
                     <h2>{topThree[0]?.playerName}</h2>
                     <p>{topThree[0]?.score}</p>
                 </div>
                 <div className="top-score-right">
+                <FaStar style={{ color: '#ffdf5f' }} />
                     <h2>{topThree[2]?.playerName}</h2>
                     <p>{topThree[2]?.score}</p>
                 </div>
             </div>
+            </IconContext.Provider>
             <ul className="rest-of-scores">
                 {remainingScores.map((entry, index) => (
                     <li key={index}>
