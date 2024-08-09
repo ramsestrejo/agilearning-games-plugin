@@ -1,0 +1,80 @@
+.leaderboard {
+     font-family: Arial, Helvetica, sans-serif;
+     background-color: #f9f9f9;
+     border-radius: 8px;
+     padding: 20px;
+     margin: 0 auto;
+     max-width: 800px;
+ }
+ 
+ .leaderboard h1 {
+     text-align: center;
+     margin-bottom: 20px;
+ }
+ 
+ .top-scores {
+     display: flex;
+     justify-content: space-around;
+     margin-bottom: 20px;
+ }
+ 
+ .top-score {
+     background-color: #ffd73c;
+     padding: 10px;
+     border-radius: 8px;
+     width: 30%;
+     text-align: center;
+ }
+ 
+ .top-score h2 {
+     margin: 0;
+ }
+ 
+ .top-score p {
+     margin: 0;
+     font-size: 1.2em;
+     font-weight: bold;
+ }
+ 
+ .top-score-left {
+     order: 1;
+ }
+ 
+ .top-score-center {
+     order: 2;
+ }
+ 
+ .top-score-right {
+     order: 3;
+ }
+ 
+ .rest-of-scores {
+     list-style: none;
+     padding: 0;
+ }
+ 
+ .rest-of-scores li {
+     background-color: #fff;
+     padding: 10px;
+     border-bottom: 1px solid #ddd;
+     border-radius: 8px;
+     margin-bottom: 10px;
+ }
+ 
+ .restart-button {
+     display: block;
+     margin: 20px auto;
+     padding: 10px 20px;
+     background-color: #ffd73c;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-family: inherit;
+     font-size: 16px;
+     transition: background-color 0.3s ease;
+ }
+ 
+ .restart-button:hover {
+     background-color: #e6c035;
+ }
+ 

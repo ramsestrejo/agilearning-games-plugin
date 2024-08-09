@@ -1,6 +1,5 @@
 import React from 'react';
-// File not yet made
-// import './Leaderboard.css';
+import './Leaderboard.css';
 
 const Leaderboard = ({ score, resetGame }) => {
      // temporary data until connection to backend
