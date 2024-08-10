@@ -7,6 +7,7 @@ CREATE TABLE story_pages (
 );
 
 INSERT INTO story_pages (story_id, page_number, content)
-VALUES (1, 1, "Piece of story text 1"),
+VALUES 
+(1, 1, "Piece of story text 1"),
 (1, 2, "Piece of story text 2"),
 (1, 3, "Piece of story text 3");

@@ -5,7 +5,8 @@ CREATE TABLE game_types (
 );
 
 INSERT INTO game_types (game_type)
-VALUES ("quiz"),
+VALUES 
+("quiz"),
 ("story"),
 ("trivia"),
 ("puzzle"),

@@ -7,4 +7,5 @@ CREATE TABLE students (
 );
 
 INSERT INTO students (password, email, username)
-VALUES ("$argon2i$v=19$m=16,t=2,p=1$cGFzc3dvcmQ$JWF+pwgScQoL9lm+4566uQ", "user1@mail.com", "user1");
+VALUES 
+("$argon2i$v=19$m=16,t=2,p=1$cGFzc3dvcmQ$JWF+pwgScQoL9lm+4566uQ", "user1@mail.com", "user1");

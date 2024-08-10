@@ -5,4 +5,5 @@ CREATE TABLE quizzes (
 );
 
 INSERT INTO quizzes (game_type)
-VALUES ("1")
+VALUES 
+("1")

@@ -5,4 +5,5 @@ CREATE TABLE stories (
 );
 
 INSERT INTO stories (game_type)
-VALUES ("2")
+VALUES 
+("2")

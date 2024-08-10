@@ -7,7 +7,8 @@ CREATE TABLE story_answers (
 );
 
 INSERT INTO story_answers (question_id, answer_text, is_correct)
-VALUES (1, "Answer 1", true),
+VALUES 
+(1, "Answer 1", true),
 (1, "Answer 2", false),
 (2, "Answer 1", false),
 (2, "Answer 2", true),
