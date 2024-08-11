@@ -42,12 +42,10 @@ router.get("/", async (req, res) => {
 router.get("/quiz/:quizId/page/:pageId", async (req, res) => {
   const { quizId, pageId } = req.params;
 
-  if (!quizId) return res.status(400).send("No quiz id provided");
-  if (!pageId) return res.status(400).send("No page id provided");
-
   const quizAnswers = await QuizAnswer.getAnswersByQuizPage(quizId, pageId);
 
-  if (!quizAnswers) return res.status(404).send("Quiz ID not found.");
+  if (!quizAnswers)
+    return res.status(404).send("Quiz ID or page ID not found.");
 
   return res.send(quizAnswers);
 });

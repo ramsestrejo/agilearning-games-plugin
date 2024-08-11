@@ -8,7 +8,8 @@
     "start": "node app.js",
     "migrate": "node node_modules/db-migrate/bin/db-migrate",
     "migrate:up": "node node_modules/db-migrate/bin/db-migrate up",
-    "migrate:down": "node node_modules/db-migrate/bin/db-migrate down"
+    "migrate:down": "node node_modules/db-migrate/bin/db-migrate down",
+    "create-db": "docker stop agilearning-mysql || true && docker rm agilearning-mysql || true && docker volume prune -f && docker run --name agilearning-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=agilearning-api -p 3306:3306 -d mysql:latest"
   },
   "keywords": [],
   "author": "",
