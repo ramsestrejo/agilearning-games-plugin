@@ -1,55 +1,54 @@
 .join-game-screen {
-     font-family: Arial, Helvetica, sans-serif;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100vh;
-     width: 100vw;
-     background-color: #4cc7bd;
- }
- 
- .join-game-card {
-     box-sizing: border-box;
-     padding: 30px;
-     border-radius: 8px;
-     box-shadow: 10px 12px 0px rgb(48, 48, 48);
-     text-align: left;
-     max-width: 350px;
-     width: 100%;
-     background-color: #ffd73c;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
- }
- 
- .join-game-card h1 {
-     margin: 0 0 20px;
- }
- 
- .join-form {
-     display: flex;
-     flex-direction: column;
- }
- 
- .join-form input {
-     margin-bottom: 15px;
-     padding: 10px;
-     border: 1px solid rgb(48, 48, 48);
-     border-radius: 8px;
- }
- 
- .join-form button {
-     margin-top: auto;
-     border-radius: 12px;
-     padding: 10px;
-     background-color: rgb(255, 253, 253);
-     border-color: rgb(48, 48, 48);
-     cursor: pointer;
-     font-size: 14px;
-     align-self: flex-start;
- }
- 
- .join-form button:hover {
-     background-color: #e9e7e7;
- }
- 
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4cc7bd;
+}
+
+.join-game-card {
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 10px 12px 0px rgb(48, 48, 48);
+  text-align: left;
+  max-width: 350px;
+  width: 100%;
+  background-color: #ffd73c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.join-game-card h1 {
+  margin: 0 0 20px;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 8px;
+}
+
+.join-form button {
+  margin-top: auto;
+  border-radius: 12px;
+  padding: 10px;
+  background-color: rgb(255, 253, 253);
+  border-color: rgb(48, 48, 48);
+  cursor: pointer;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.join-form button:hover {
+  background-color: #e9e7e7;
+}

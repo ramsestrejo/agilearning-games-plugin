@@ -27,8 +27,6 @@ const QuizForm = () => {
 
     const gameCode = generateGameCode();
 
-    // logic here for storing the quiz data and game code in database
-
     // TO DO: IMPLEMENT WITH API >>>
     // navigate("/creation-success", { state: { gameCode } });
 
