@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHookstate } from "@hookstate/core";
 import "./StoryGame.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StoryGame = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const state = useHookstate({
     currentSegmentIndex: 0,
@@ -13,7 +14,8 @@ const StoryGame = () => {
     view: "story",
     storyData: [
       {
-        storyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum turpis est, sodales scelerisque facilisis sed, blandit eget nisl. Nulla facilisi. Donec feugiat sed ipsum a egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam luctus, odio eget pellentesque hendrerit, nulla sem luctus diam, in feugiat nunc quam sed eros. Vivamus imperdiet, enim ut faucibus consequat, dui ex gravida felis, ac sollicitudin sem ex in sapien. In consectetur dui lorem, non dignissim purus blandit ut. Quisque a varius lorem, sed aliquet mi. Sed imperdiet erat a porta aliquam. ",
+        storyText:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum turpis est, sodales scelerisque facilisis sed, blandit eget nisl. Nulla facilisi. Donec feugiat sed ipsum a egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam luctus, odio eget pellentesque hendrerit, nulla sem luctus diam, in feugiat nunc quam sed eros. Vivamus imperdiet, enim ut faucibus consequat, dui ex gravida felis, ac sollicitudin sem ex in sapien. In consectetur dui lorem, non dignissim purus blandit ut. Quisque a varius lorem, sed aliquet mi. Sed imperdiet erat a porta aliquam. ",
         questionText: "Question 1?",
         answers: ["Answer 1", "Answer 2"],
         correctAnswer: "Answer 1",
@@ -87,6 +89,8 @@ const StoryGame = () => {
         if (nextIndex < state.storyData.get().length) {
           state.currentSegmentIndex.set(nextIndex);
           state.view.set("story");
+        } else {
+          navigate("/leaderboard", { state: { score: state.score.get() } });
         }
         state.isSubmitted.set(false);
       }, 2000);

@@ -2,7 +2,7 @@ import React from "react";
 import { useHookstate } from "@hookstate/core";
 import StoryBlockInput from "./StoryBlockInput";
 import "./StoryForm.css";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 const StoryForm = () => {
   const state = useHookstate({
@@ -90,8 +90,12 @@ const StoryForm = () => {
 
     // console.log("Story Data:", storyBlocks);
     // logic to submit story data
-    // temporarily adding route for the story game from here to test and add styling
-    navigate(`/story-game/${id}`);
+
+    navigate(
+      `/creation-success/${id}?${createSearchParams({
+        type: "story",
+      })}`
+    );
   };
 
   const handleAddStoryBlock = () => {
