@@ -20,14 +20,15 @@
    
    .story-section,
    .storyquestion-section {
-     background-color: #ffd73c;
-     padding: 15px;
+      background-color: #ffd73c;
+      padding: 30px 50px;
      border-radius: 8px;
      margin: 0 auto 20px;
      width: 50%;
      box-sizing: border-box;
      align-self: center;
      text-align: center;
+     min-height: 400px;
    }
    
    .storyanswers-grid {

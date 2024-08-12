@@ -13,7 +13,7 @@ const StoryGame = () => {
     view: "story",
     storyData: [
       {
-        storyText: "Piece of story text 1.",
+        storyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum turpis est, sodales scelerisque facilisis sed, blandit eget nisl. Nulla facilisi. Donec feugiat sed ipsum a egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam luctus, odio eget pellentesque hendrerit, nulla sem luctus diam, in feugiat nunc quam sed eros. Vivamus imperdiet, enim ut faucibus consequat, dui ex gravida felis, ac sollicitudin sem ex in sapien. In consectetur dui lorem, non dignissim purus blandit ut. Quisque a varius lorem, sed aliquet mi. Sed imperdiet erat a porta aliquam. ",
         questionText: "Question 1?",
         answers: ["Answer 1", "Answer 2"],
         correctAnswer: "Answer 1",
