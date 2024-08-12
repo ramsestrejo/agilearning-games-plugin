@@ -30,24 +30,6 @@
      text-align: center;
    }
    
-   /* .storyquestion-section {
-     background-color: #ffff;
-     padding: 15px;
-     border-radius: 8px;
-     width: calc(100% - 30px);
-     box-sizing: border-box;
-     height: 65%;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     margin-top: 20px;
-     margin-left: auto;
-     margin-right: auto;
-     margin-bottom: 20px;
-     position: relative;
-   } */
-   
    .storyanswers-grid {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
@@ -88,24 +70,6 @@
    .storyanswer-button.selected {
      background-color: #ffdd99;
      border: 2px solid #ffd73c;
-   }
-   
-   .storysubmit-button {
-     position: absolute;
-     bottom: 15px;
-     right: 15px;
-     padding: 15px 30px;
-     background-color: #ffd73c;
-     border: none;
-     border-radius: 8px;
-     cursor: pointer;
-     font-family: inherit;
-     font-size: 18px;
-     transition: background-color 0.3s ease;
-   }
-   
-   .storysubmit-button:hover {
-     background-color: #e6c035;
    }
    
    .storycontinue-button {
