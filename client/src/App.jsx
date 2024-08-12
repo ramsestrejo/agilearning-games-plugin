@@ -9,7 +9,6 @@ import QuizGame from "./components/QuizGame/QuizGame.jsx";
 import StoryGame from "./components/StoryGame/StoryGame.jsx";
 import Leaderboard from "./components/QuizGame/Leaderboard.jsx";
 import CreationSuccessPage from "./components/CreationSuccessPage.jsx";
-//  import CreationSuccessPage from './CreationSuccessPage';
 
 const App = () => {
   return (

@@ -18,7 +18,8 @@
      justify-content: center;
    }
    
-   .story-section {
+   .story-section,
+   .storyquestion-section {
      background-color: #ffd73c;
      padding: 15px;
      border-radius: 8px;
@@ -29,7 +30,7 @@
      text-align: center;
    }
    
-   .storyquestion-section {
+   /* .storyquestion-section {
      background-color: #ffff;
      padding: 15px;
      border-radius: 8px;
@@ -45,7 +46,7 @@
      margin-right: auto;
      margin-bottom: 20px;
      position: relative;
-   }
+   } */
    
    .storyanswers-grid {
      display: grid;

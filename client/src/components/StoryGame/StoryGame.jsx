@@ -80,12 +80,6 @@ const StoryGame = () => {
   const handleAnswerClick = (answer) => {
     if (!state.isSubmitted.get() && state.view.get() === "question") {
       state.selectedAnswer.set(answer);
-    }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (state.view.get() === "question") {
       state.isSubmitted.set(true);
 
       setTimeout(() => {
@@ -105,7 +99,7 @@ const StoryGame = () => {
 
   return (
     <div className="story-game">
-      <form onSubmit={handleSubmit} className="storygame-form">
+      <form className="storygame-form">
         {state.view.get() === "story" ? (
           <div className="story-section">
             <p>{currentSegment.storyText}</p>
@@ -144,13 +138,6 @@ const StoryGame = () => {
                 );
               })}
             </div>
-            <button
-              type="submit"
-              className="storysubmit-button"
-              disabled={state.isSubmitted.get()}
-            >
-              Submit Answer
-            </button>
           </div>
         )}
       </form>
