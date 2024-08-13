@@ -1,0 +1,26 @@
+# Agilearning
+
+## Required Software
+
+- Docker
+
+## Starting The Dev App
+
+- Clone the app to your local system
+- In /agilearning-plugin, run "npm run install-dependencies" in the terminal.
+- In /agilearning-plugin/client, add an .env file with these parameters:
+  - VITE_API_PORT=3001
+  - VITE_PORT=3000
+- In /agilearning-plugin/server, add an .env file with these parameters:
+
+  - PORT=3001
+  - DB_HOST=localhost
+  - DB_USER=root
+  - DB_PASSWORD=password
+  - DB_NAME=agilearning-api
+
+- In /agilearning-plugin/server, ensuring Docker is running, run "npm run create-db" in the terminal
+  - confirm a new container named agilearning-mysql has been created and is running.
+- After that, still in /server, run "npm run migrate:up".
+
+To actually run the app, in the /agilearning-plugin terminal, run "npm run start".
