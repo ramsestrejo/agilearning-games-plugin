@@ -2,7 +2,7 @@ import React from "react";
 import { useHookstate } from "@hookstate/core";
 import QuizBlockInput from "./QuizBlockInput";
 import "./QuizForm.css";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 const generateGameCode = () => {
   return Math.random().toString(36).slice(2, 8).toUpperCase();
@@ -26,9 +26,6 @@ const QuizForm = () => {
     const { questions } = state.get();
 
     const gameCode = generateGameCode();
-
-    // TO DO: IMPLEMENT WITH API >>>
-    // navigate("/creation-success", { state: { gameCode } });
 
     const newQuiz = await fetch("/api/quizzes", {
       // Adding method type
@@ -93,7 +90,11 @@ const QuizForm = () => {
 
     const newQuizAnswersJson = await newQuizAnswers.json();
 
-    navigate(`/quiz-game/${id}`);
+    navigate(
+      `/creation-success/${id}?${createSearchParams({
+        type: "quiz",
+      })}`
+    );
   };
 
   const handleAddQuestion = () => {

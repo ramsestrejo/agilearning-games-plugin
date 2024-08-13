@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/create-game/story" element={<StoryForm />} />
         <Route path="/story-game/:id" element={<StoryGame />} />
-        <Route path="/creation-success" element={<CreationSuccessPage />} />
+        <Route path="/creation-success/:id" element={<CreationSuccessPage />} />
       </Routes>
     </Router>
   );
