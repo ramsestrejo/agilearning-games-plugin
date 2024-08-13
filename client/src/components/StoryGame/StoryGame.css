@@ -18,7 +18,19 @@
      justify-content: center;
    }
    
-   .story-section,
+   .story-section {
+    background-color: #ffd73c;
+    padding: 30px 50px;
+   border-radius: 8px;
+   margin: 0 auto 20px;
+   width: 50%;
+   box-sizing: border-box;
+   align-self: center;
+   text-align: center;
+   min-height: 400px;
+   position: relative;
+ }
+
    .storyquestion-section {
       background-color: #ffd73c;
       padding: 30px 50px;
@@ -72,19 +84,42 @@
      background-color: #ffdd99;
      border: 2px solid #ffd73c;
    }
-   
+
    .storycontinue-button {
-     background-color: #ffd73c;
-     border: none;
-     padding: 15px 30px;
-     border-radius: 8px;
-     cursor: pointer;
-     font-family: inherit;
-     font-size: 18px;
-     transition: background-color 0.3s ease;
-     margin-top: 20px;
-   }
-   
-   .storycontinue-button:hover {
-     background-color: #e6c035;
-   }
+    background-color: #ffd73c;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+
+   .storyarrow {
+    background-color: #ffd73c;
+    transition: border-color 0.3s ease;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+    display: inline-block;
+    border-color: #ddd;
+  }
+
+  .storyarrow::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #f0f0f0;
+  }
+
+  .storyarrow:hover::after {
+    border-color: transparent transparent transparent #fd3d7b;
+  }

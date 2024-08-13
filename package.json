@@ -7,7 +7,8 @@
     "client": "cd client && npm run build && npm start",
     "server": "cd server && npm start",
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm install --prefix server && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+    "npm-install": "concurrently \"cd client && npm i\" \"cd ../server && npm i\" \"cd .. && npm i\""
   },
   "keywords": [],
   "author": "",

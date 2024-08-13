@@ -108,7 +108,7 @@ const StoryGame = () => {
               className="storycontinue-button"
               onClick={handleContinue}
             >
-              Continue
+              <span className="storyarrow"></span>
             </button>
           </div>
         ) : (
