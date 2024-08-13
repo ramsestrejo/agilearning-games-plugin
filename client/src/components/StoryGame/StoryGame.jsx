@@ -74,6 +74,9 @@ const StoryGame = () => {
     state.isSubmitted.set(false);
   }, [state.currentSegmentIndex.get()]);
 
+  const currentSegmentIndex = state.currentSegmentIndex.get();
+  const storyData = state.storyData.get();
+  const totalPages = storyData.length;
   const currentSegment = state.storyData.get()[state.currentSegmentIndex.get()];
   const isCorrect = state.selectedAnswer.get() === currentSegment.correctAnswer;
 
@@ -84,7 +87,7 @@ const StoryGame = () => {
 
       setTimeout(() => {
         const nextIndex = state.currentSegmentIndex.get() + 1;
-        if (nextIndex < state.storyData.get().length) {
+        if (nextIndex < totalPages) {
           state.currentSegmentIndex.set(nextIndex);
           state.view.set("story");
         }
@@ -103,6 +106,9 @@ const StoryGame = () => {
         {state.view.get() === "story" ? (
           <div className="story-section">
             <p>{currentSegment.storyText}</p>
+            <div className="page-count">
+              Page {currentSegmentIndex + 1} / {totalPages}
+            </div>
             <button
               type="button"
               className="storycontinue-button"

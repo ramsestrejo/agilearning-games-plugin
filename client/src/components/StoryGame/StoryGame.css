@@ -107,7 +107,7 @@
     margin-left: 10px;
     cursor: pointer;
     display: inline-block;
-    border-color: #ddd;
+    border-color: #f0f0f0;
   }
 
   .storyarrow::after {
@@ -122,4 +122,15 @@
 
   .storyarrow:hover::after {
     border-color: transparent transparent transparent #fd3d7b;
+  }
+
+  .page-count {
+    font-size: 16px;
+    color: #faf8f8;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    background-color: #f1cc37;
+    padding: 5px;
+    border-radius: 4px;
   }
