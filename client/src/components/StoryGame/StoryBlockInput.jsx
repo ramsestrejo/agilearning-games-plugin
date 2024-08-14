@@ -18,9 +18,11 @@ const StoryBlockInput = ({ index, blockState }) => {
         answers.set(updatedAnswers);
     };
 
+    // remove an answer
     const handleRemoveAnswer = (i) => {
         const updatedAnswers = answers.get().filter((_, j) => j !== i);
         answers.set(updatedAnswers);
+        // clears correct answer if the set correct answer was removed
         if (correctAnswer.get() === answers.get()[i]) {
             correctAnswer.set('');
         }
