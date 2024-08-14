@@ -1,10 +1,10 @@
-html, body {
+.success-page html, body {
      height: 100%;
      margin: 0;
      padding: 0;
    }
    
-   body {
+   .success-page body {
      background-color: #4cc7bd;
      font-family: Arial, Helvetica, sans-serif;
    }
@@ -20,35 +20,40 @@ html, body {
      color: #ffffff;
    }
    
-   h3 {
+   .success-page h3 {
      color: #ffffff;
      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
      margin-bottom: 20px;
+     font-size: 24px;
    }
    
-   p {
+   .success-page p {
      color: #ffffff;
      margin: 10px 0;
+     font-size: 18px;
    }
    
-   .play-now-button {
+   .play-now-button,
+   .create-another-button {
      background-color: #ffd73c;
      color: #000;
-     padding: 15px 30px;
-     margin: 10px;
+     padding: 10px 20px;
+     margin: 8px;
      border: none;
-     border-radius: 8px;
-     box-shadow: 10px 12px 0px rgb(48, 48, 48);
-     font-size: 18px;
+     border-radius: 6px;
+     box-shadow: 6px 8px 0px rgb(48, 48, 48);
+     font-size: 16px;
      cursor: pointer;
      transition: transform 0.3s;
      text-align: center;
    }
    
-   .play-now-button:hover {
+   .play-now-button:hover,
+   .create-another-button:hover {
      transform: scale(1.05);
    }
    
-   .play-now-button:active {
+   .play-now-button:active,
+   .create-another-button:active {
      transform: scale(0.95);
    }

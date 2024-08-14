@@ -17,6 +17,10 @@ const CreationSuccessPage = () => {
     navigate("/join-game");
   };
 
+  const handleCreateAnother = () => {
+    navigate("/create-game");
+  };
+
   return (
     <div className="success-page">
       <h3>Your {searchParams.get("type")} has successfully been created!</h3>
@@ -26,7 +30,7 @@ const CreationSuccessPage = () => {
         {searchParams.get("type")}.
       </p>
       <button className="play-now-button" onClick={handlePlayNow}>Play Now</button>
-      {/* maybe add an option to return to the main menu or create another quiz */}
+      <button className="create-another-button" onClick={handleCreateAnother}>Create Another Game</button>
     </div>
   );
 };
