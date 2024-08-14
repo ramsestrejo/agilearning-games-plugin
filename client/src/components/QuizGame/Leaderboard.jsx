@@ -19,13 +19,16 @@ const Leaderboard = ({ score, resetGame }) => {
     { playerName: "Player 7", score: 40 },
   ];
 
+  // sorts the leaderboard scores
   const sortedLeaderboardData = [...leaderboardData].sort(
     (a, b) => b.score - a.score
   );
 
+  // gets the top three scores and then the remaining scores
   const topThree = sortedLeaderboardData.slice(0, 3);
   const remainingScores = sortedLeaderboardData.slice(3);
 
+  // handle returning to the homescreen
   const handleReturnToMenu = () => {
     navigate("/");
   };
