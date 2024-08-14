@@ -23,8 +23,8 @@ const CreateGameScreen = () => {
       .catch((error) => console.error("Error fetching games:", error));
   }, []);
 
+  // navigates to game creation form based on the type of game
   const handleCreateGame = (gameName) => {
-    console.log(`Creating game of type: ${gameName}`);
     navigate(`/create-game/${gameName.toLowerCase()}`);
   };
 
