@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHookstate } from "@hookstate/core";
 import "./JoinGameScreen.css";
 import { useNavigate } from "react-router-dom";
 
 const JoinGameScreen = () => {
   const navigate = useNavigate();
+  // states for holding the page data related to the user and game
   const [username, setDisplayName] = React.useState("");
   const [gameId, setGameId] = React.useState("");
   const [games, setGames] = useState([]);
@@ -24,6 +24,7 @@ const JoinGameScreen = () => {
       .catch((error) => console.error("Error fetching games:", error));
   }, []);
 
+  // joins a game based on the game type and id
   const handleJoin = () => {
     navigate(`/${selectedGame}-game/${gameId}`);
   };

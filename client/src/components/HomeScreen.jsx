@@ -1,15 +1,16 @@
 import React from "react";
-import { useHookstate } from "@hookstate/core";
 import { useNavigate } from "react-router-dom";
 import "./HomeScreen.css";
 
 const HomeScreen = () => {
   const navigate = useNavigate();
 
+  // for taking users to where they can choose which game to create
   const handleCreateGame = () => {
     navigate("/create-game");
   };
 
+  // takes users to where they can input a code to join a game
   const handleJoinGame = () => {
     navigate("/join-game");
   };
