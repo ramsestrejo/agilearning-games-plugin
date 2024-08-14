@@ -4,37 +4,24 @@ import "./QuizGame.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 const QuizGame = () => {
+  // get quiz id
   const { id } = useParams();
 
   useEffect(() => console.log(id), [id]);
 
+  // local state for start time
   const [timer, setTimer] = useState(30);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
-  //temporary use state
+  // temporary use state for quiz data
   const [temp, setTemp] = useState(true);
 
+  // state for quiz data
   const state = useHookstate({
     currentQuestionIndex: 0,
     selectedAnswer: "",
     isSubmitted: false,
     score: 0,
-    quizData: [
-      {
-        questionText: "What is the square root of 36?",
-        answers: ["4", "6", "3", "12"],
-        correctAnswer: "6",
-      },
-      {
-        questionText: "Question 2?",
-        answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-        correctAnswer: "Answer 1",
-      },
-      {
-        questionText: "Question 3?",
-        answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-        correctAnswer: "Answer 4",
-      },
-    ],
+    quizData: [],
   });
 
   useEffect(() => {
@@ -62,9 +49,6 @@ const QuizGame = () => {
         })
       );
     };
-    // if (!quizData.length) {
-    //   loadQuizData();
-    // }
 
     if (temp && state) {
       loadQuizData();
@@ -79,6 +63,7 @@ const QuizGame = () => {
     state.selectedAnswer.set("");
     state.isSubmitted.set(false);
 
+    // reset timer
     setTimer(30);
     setQuestionStartTime(Date.now());
 
@@ -113,6 +98,7 @@ const QuizGame = () => {
         state.score.set(state.score.get() + bonusScore);
       }
 
+      // moves to next question or goes to leaderboard
       setTimeout(() => {
         const nextIndex = state.currentQuestionIndex.get() + 1;
         if (nextIndex < state.quizData.get().length) {
