@@ -9,6 +9,7 @@ import QuizGame from "./components/QuizGame/QuizGame.jsx";
 import StoryGame from "./components/StoryGame/StoryGame.jsx";
 import Leaderboard from "./components/QuizGame/Leaderboard.jsx";
 import CreationSuccessPage from "./components/CreationSuccessPage.jsx";
+import ResultPage from "./components/StoryGame/ResultPage.jsx";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/create-game/story" element={<StoryForm />} />
         <Route path="/story-game/:id" element={<StoryGame />} />
         <Route path="/creation-success/:id" element={<CreationSuccessPage />} />
+        <Route path="/result/:score" element={<ResultPage />} />
       </Routes>
     </Router>
   );

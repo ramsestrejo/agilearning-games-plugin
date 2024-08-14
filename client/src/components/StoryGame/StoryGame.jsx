@@ -12,27 +12,9 @@ const StoryGame = () => {
     selectedAnswer: "",
     isSubmitted: false,
     view: "story",
-    storyData: [
-      {
-        storyText:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum turpis est, sodales scelerisque facilisis sed, blandit eget nisl. Nulla facilisi. Donec feugiat sed ipsum a egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam luctus, odio eget pellentesque hendrerit, nulla sem luctus diam, in feugiat nunc quam sed eros. Vivamus imperdiet, enim ut faucibus consequat, dui ex gravida felis, ac sollicitudin sem ex in sapien. In consectetur dui lorem, non dignissim purus blandit ut. Quisque a varius lorem, sed aliquet mi. Sed imperdiet erat a porta aliquam. ",
-        questionText: "Question 1?",
-        answers: ["Answer 1", "Answer 2"],
-        correctAnswer: "Answer 1",
-      },
-      {
-        storyText: "Piece of story text 2.",
-        questionText: "Question 2?",
-        answers: ["Answer 1", "Answer 2"],
-        correctAnswer: "Answer 2",
-      },
-      {
-        storyText: "Piece of story text 3.",
-        questionText: "Question 3?",
-        answers: ["Yes", "No"],
-        correctAnswer: "Yes",
-      },
-    ],
+    storyData: [],
+    score: 0,
+    customMessages: [],
   });
 
   //temporary use state
@@ -46,6 +28,7 @@ const StoryGame = () => {
       const storyAnswers = await fetch(`/api/story-answers/story/${id}`).then(
         async (res) => await res.json()
       );
+      const customMessages = await fetch(`/api/custom-messages/story/${id}`).then(res => res.json());
 
       state.storyData.set(
         storyPages.map(({ question, pageNumber, content }) => {
@@ -63,6 +46,7 @@ const StoryGame = () => {
           };
         })
       );
+      state.customMessages.set(customMessages);
     };
 
     if (temp && state) {
@@ -87,13 +71,17 @@ const StoryGame = () => {
       state.selectedAnswer.set(answer);
       state.isSubmitted.set(true);
 
+      if (isCorrect) {
+        state.score.set(state.score.get() + 1);
+      }
+
       setTimeout(() => {
         const nextIndex = state.currentSegmentIndex.get() + 1;
         if (nextIndex < totalPages) {
           state.currentSegmentIndex.set(nextIndex);
           state.view.set("story");
         } else {
-          navigate("/leaderboard", { state: { score: state.score.get() } });
+          navigate(`/result/${state.score.get()}`);
         }
         state.isSubmitted.set(false);
       }, 2000);

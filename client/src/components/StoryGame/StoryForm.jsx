@@ -5,6 +5,7 @@ import "./StoryForm.css";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 const StoryForm = () => {
+  const [customMessages, setCustomMessages] = useState([{ threshold: "", message: "" }]);
   const state = useHookstate({
     storyBlocks: [
       {
@@ -88,8 +89,11 @@ const StoryForm = () => {
 
     const newStoryAnswersJson = await newStoryAnswers.json();
 
-    // console.log("Story Data:", storyBlocks);
-    // logic to submit story data
+    await fetch("/api/custom-messages", {
+      method: "POST",
+      body: JSON.stringify({ storyId: id, messages: customMessages }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
 
     navigate(
       `/creation-success/${id}?${createSearchParams({
@@ -109,6 +113,16 @@ const StoryForm = () => {
     ]);
   };
 
+  const handleAddCustomMessage = () => {
+    setCustomMessages([...customMessages, { threshold: "", message: "" }]);
+  };
+
+  const handleCustomMessageChange = (index, field, value) => {
+    const updatedMessages = [...customMessages];
+    updatedMessages[index] = { ...updatedMessages[index], [field]: value };
+    setCustomMessages(updatedMessages);
+  };
+
   return (
     <form className="story-form" onSubmit={handleSubmit}>
       {state.storyBlocks.map((blockState, index) => (
@@ -121,6 +135,32 @@ const StoryForm = () => {
       >
         Add Story Block
       </button>
+      <div className="custom-messages">
+        <h3>Custom Messages</h3>
+        {customMessages.map((msg, index) => (
+          <div key={index} className="custom-message-input">
+            <label>
+              Score Threshold:
+              <input
+                type="number"
+                value={msg.threshold}
+                onChange={(e) => handleCustomMessageChange(index, "threshold", e.target.value)}
+              />
+            </label>
+            <label>
+              Message:
+              <input
+                type="text"
+                value={msg.message}
+                onChange={(e) => handleCustomMessageChange(index, "message", e.target.value)}
+              />
+            </label>
+          </div>
+        ))}
+        <button type="button" onClick={handleAddCustomMessage}>
+          Add Custom Message
+        </button>
+      </div>
       <button className="submit-story-btn" type="submit">
         Submit Story
       </button>
