@@ -5,6 +5,7 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+import "./CreationSuccessPage.css";
 
 const CreationSuccessPage = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const CreationSuccessPage = () => {
         You can share this code with others to let them take your{" "}
         {searchParams.get("type")}.
       </p>
-      <button onClick={handlePlayNow}>Play Now</button>
+      <button className="play-now-button" onClick={handlePlayNow}>Play Now</button>
       {/* maybe add an option to return to the main menu or create another quiz */}
     </div>
   );
