@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     useParams,
     useSearchParams,
@@ -11,12 +11,14 @@ const CreationSuccessPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { id } = useParams();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
+    // for going to the join game page where users can enter their code
     const handlePlayNow = () => {
         navigate("/join-game");
     };
 
+    // for going back to the create game screen
     const handleCreateAnother = () => {
         navigate("/create-game");
     };
