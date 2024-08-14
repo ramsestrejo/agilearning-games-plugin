@@ -2,14 +2,14 @@
      height: 100%;
      margin: 0;
      padding: 0;
-   }
-   
-   .result-page body {
+}
+
+.result-page body {
      background-color: #4cc7bd;
      font-family: Arial, Helvetica, sans-serif;
-   }
-   
-   .result-page {
+}
+
+.result-page {
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -18,22 +18,22 @@
      width: 100vw;
      text-align: center;
      color: #ffffff;
-   }
-   
-   .result-page h1 {
+}
+
+.result-page h1 {
      color: #ffffff;
      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
      margin-bottom: 20px;
      font-size: 24px;
-   }
-   
-   .result-page p {
+}
+
+.result-page p {
      color: #ffffff;
      margin: 10px 0;
      font-size: 18px;
-   }
-   
-   .home-button {
+}
+
+.home-button {
      background-color: #ffd73c;
      color: #000;
      padding: 10px 20px;
@@ -45,12 +45,12 @@
      cursor: pointer;
      transition: transform 0.3s;
      text-align: center;
-   }
-   
-   .home-button:hover {
+}
+
+.home-button:hover {
      transform: scale(1.05);
-   }
-   
-   .home-button:active {
+}
+
+.home-button:active {
      transform: scale(0.95);
-   }
+}
