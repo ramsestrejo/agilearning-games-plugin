@@ -1,47 +1,47 @@
 .game-type-card {
-     flex: 0 0 calc(40% - 20px);
-     box-sizing: border-box;
-     margin: 10px 10px 0 10px;
-     padding: 30px;
-     border-radius: 8px;
-     box-shadow: 10px 12px 0px rgb(48, 48, 48);
-     text-align: left;
-     max-width: 350px;
-     height: 70vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
-   }
+  flex: 0 0 calc(40% - 20px);
+  box-sizing: border-box;
+  margin: 10px 10px 0 10px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 10px 12px 0px rgb(48, 48, 48);
+  text-align: left;
+  max-width: 350px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-   .game-type-card h2 {
-     margin: 10px 0 10px;
- }
- 
- .game-type-card p {
-     flex: 1; 
-     margin: 10px 0 20px;
- }
- 
- .game-type-card button {
-     margin-top: auto;
-     border-radius: 12px;
-     width: 120px;
-     padding: 10px;
-     align-self: flex-start;
-     background-color: rgb(255, 253, 253);
-     border-color: rgb(48, 48, 48);
-     cursor: pointer;
-     font-size: 14px;
- }
- 
- .game-type-card button:hover {
-     background-color: #e9e7e7;
- }
+.game-type-card h2 {
+  margin: 10px 0 10px;
+}
 
-   .game-type-card:nth-child(odd) {
-     background-color: #ffd73c;
-   }
-   
-   .game-type-card:nth-child(even) {
-     background-color: #e0e0e0;
-   }
+.game-type-card p {
+  flex: 1; 
+  margin: 10px 0 20px;
+}
+
+.game-type-card button {
+  margin-top: auto;
+  border-radius: 12px;
+  width: 120px;
+  padding: 10px;
+  align-self: flex-start;
+  background-color: rgb(255, 253, 253);
+  border-color: rgb(48, 48, 48);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.game-type-card button:hover {
+  background-color: #e9e7e7;
+}
+
+.game-type-card:nth-child(odd) {
+  background-color: #ffd73c;
+}
+
+.game-type-card:nth-child(even) {
+  background-color: #e0e0e0;
+}

@@ -33,12 +33,6 @@ const JoinGameScreen = () => {
       <div className="join-game-card">
         <h1>Join a Game</h1>
         <div className="join-form">
-          {/* <input
-                         type="text"
-                         placeholder="Enter a Game Code"
-                         value={gameCode.get()}
-                         onChange={(e) => gameCode.set(e.target.value)}
-                    /> */}
           <input
             type="text"
             placeholder="Enter a Display Name"
