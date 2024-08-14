@@ -6,6 +6,7 @@ import "./ResultPage.css";
 const ResultPage = () => {
      const navigate = useNavigate();
      const { score } = useParams();
+     // store custom message based on score
      const [message, setMessage] = useState("");
 
      useEffect(() => {
@@ -18,6 +19,7 @@ const ResultPage = () => {
      fetchCustomMessage();
      }, [score]);
 
+     // navigate back to homescreen
      const handleGoHome = () => {
           navigate("/");
      };
