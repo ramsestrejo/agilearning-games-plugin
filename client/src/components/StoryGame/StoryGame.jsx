@@ -55,6 +55,7 @@ const StoryGame = () => {
     }
   }, [temp, state]);
 
+  // resets answer and submission state when the index changes
   useEffect(() => {
     state.selectedAnswer.set("");
     state.isSubmitted.set(false);
@@ -88,6 +89,7 @@ const StoryGame = () => {
     }
   };
 
+  // switches the view to the question layout
   const handleContinue = () => {
     state.view.set("question");
   };
