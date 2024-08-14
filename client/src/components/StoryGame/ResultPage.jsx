@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ResultPage = () => {
+     const navigate = useNavigate();
   const { score } = useParams();
   const [message, setMessage] = useState("");
 
@@ -15,10 +17,15 @@ const ResultPage = () => {
     fetchCustomMessage();
   }, [score]);
 
+  const handleGoHome = () => {
+     navigate("/");
+   };
+
   return (
     <div className="result-page">
       <h1>Your Score: {score}</h1>
       {message && <p>{message}</p>}
+      <button className="home-button" onClick={handleGoHome}>Home</button>
     </div>
   );
 };
