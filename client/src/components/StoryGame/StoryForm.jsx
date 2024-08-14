@@ -89,12 +89,14 @@ const StoryForm = () => {
 
     const newStoryAnswersJson = await newStoryAnswers.json();
 
+    // post request for creating custom messages
     await fetch("/api/custom-messages", {
       method: "POST",
       body: JSON.stringify({ storyId: id, messages: customMessages }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     });
 
+    // navigation to the success page with id
     navigate(
       `/creation-success/${id}?${createSearchParams({
         type: "story",
@@ -113,10 +115,12 @@ const StoryForm = () => {
     ]);
   };
 
+  // adding custom message
   const handleAddCustomMessage = () => {
     setCustomMessages([...customMessages, { threshold: "", message: "" }]);
   };
 
+  // updating custom message
   const handleCustomMessageChange = (index, field, value) => {
     const updatedMessages = [...customMessages];
     updatedMessages[index] = { ...updatedMessages[index], [field]: value };
