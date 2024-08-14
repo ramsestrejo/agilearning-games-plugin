@@ -4,6 +4,8 @@ import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 
+// component displays the top scores, followed by the lower scores
+// users can then retry the quiz or go to the homescreen
 const Leaderboard = ({ score, resetGame }) => {
   const navigate = useNavigate();
   // temporary data until connection to backend
