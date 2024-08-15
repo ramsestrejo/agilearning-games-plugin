@@ -28,9 +28,11 @@ const StoryGame = () => {
       const storyAnswers = await fetch(`/api/story-answers/story/${id}`).then(
         async (res) => await res.json()
       );
-      const customMessages = await fetch(
-        `/api/custom-messages/story/${id}`
-      ).then((res) => res.json());
+      // const customMessages = await fetch(
+      //   `/api/custom-messages/story/${id}`
+      // ).then((res) => res.json());
+
+      const customMessages = ["To be created"];
 
       state.storyData.set(
         storyPages.map(({ question, pageNumber, content }) => {
@@ -67,7 +69,8 @@ const StoryGame = () => {
   const storyData = state.storyData.get();
   const totalPages = storyData.length;
   const currentSegment = state.storyData.get()[state.currentSegmentIndex.get()];
-  const isCorrect = state.selectedAnswer.get() === currentSegment.correctAnswer;
+  const isCorrect =
+    state.selectedAnswer.get() === currentSegment?.correctAnswer;
 
   const handleAnswerClick = (answer) => {
     if (!state.isSubmitted.get() && state.view.get() === "question") {
@@ -101,7 +104,7 @@ const StoryGame = () => {
       <form className="storygame-form">
         {state.view.get() === "story" ? (
           <div className="story-section">
-            <p>{currentSegment.storyText}</p>
+            <p>{currentSegment?.storyText}</p>
             <div className="page-count">
               Page {currentSegmentIndex + 1} / {totalPages}
             </div>
