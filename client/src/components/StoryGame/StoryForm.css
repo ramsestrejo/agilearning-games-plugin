@@ -131,7 +131,7 @@
 .add-custom-message-btn {
     display: block;
     margin: 10px auto;
-    background-color: #ffd73c;
+    background-color: #e6c035;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
@@ -141,5 +141,5 @@
 }
 
 .add-custom-message-btn:hover {
-    background-color: #e6c035;
+    background-color: #ceab2a;
 }
