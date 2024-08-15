@@ -140,11 +140,11 @@ const StoryForm = () => {
         Add Story Block
       </button>
       <div className="custom-messages">
-        <h3>Custom Messages</h3>
+        <h3>Custom Messages for Results</h3>
         {customMessages.map((msg, index) => (
           <div key={index} className="custom-message-input">
             <label>
-              Score Threshold:
+              Score:
               <input
                 type="number"
                 value={msg.threshold}
