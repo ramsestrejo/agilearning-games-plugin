@@ -79,3 +79,67 @@
 .answer-container button {
     margin-left: 10px;
 }
+
+.custom-messages {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ffd73c;
+}
+
+.custom-messages h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.custom-message-input {
+    margin-bottom: 15px;
+}
+
+.custom-message-input label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.custom-message-input input[type="number"],
+.custom-message-input input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.custom-message-input button {
+    background-color: #e6c035;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+}
+
+.custom-message-input button:hover {
+    background-color: #ceab2a;
+}
+
+.add-custom-message-btn {
+    display: block;
+    margin: 10px auto;
+    background-color: #ffd73c;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-custom-message-btn:hover {
+    background-color: #e6c035;
+}

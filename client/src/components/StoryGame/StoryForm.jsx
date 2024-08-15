@@ -144,7 +144,7 @@ const StoryForm = () => {
         {customMessages.map((msg, index) => (
           <div key={index} className="custom-message-input">
             <label>
-              Score:
+              If Player Receives a Score of:
               <input
                 type="number"
                 value={msg.threshold}
@@ -152,7 +152,7 @@ const StoryForm = () => {
               />
             </label>
             <label>
-              Message:
+              Display This Message:
               <input
                 type="text"
                 value={msg.message}
@@ -161,7 +161,7 @@ const StoryForm = () => {
             </label>
           </div>
         ))}
-        <button type="button" onClick={handleAddCustomMessage}>
+        <button className="add-custom-message-btn" type="button" onClick={handleAddCustomMessage}>
           Add Custom Message
         </button>
       </div>
