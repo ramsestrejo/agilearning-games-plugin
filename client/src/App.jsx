@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/create-game" element={<CreateGameScreen />} />
         <Route path="/create-game/quiz" element={<QuizForm />} />
         <Route path="/quiz-game/:id" element={<QuizGame />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/leaderboard/:id" element={<Leaderboard />} />
         <Route path="/create-game/story" element={<StoryForm />} />
         <Route path="/story-game/:id" element={<StoryGame />} />
         <Route path="/creation-success/:id" element={<CreationSuccessPage />} />

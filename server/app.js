@@ -9,6 +9,7 @@ import quizPagesApi from "./apis/routes/quizPages.js";
 import storiesApi from "./apis/routes/stories.js";
 import storyAnswersApi from "./apis/routes/storyAnswers.js";
 import storyPagesApi from "./apis/routes/storyPages.js";
+import quizScoresApi from "./apis/routes/quizScores.js";
 import cors from "cors";
 
 dotenv.config();
@@ -29,6 +30,7 @@ app.use("/api/quiz-answers", quizAnswersApi);
 app.use("/api/stories", storiesApi);
 app.use("/api/story-pages", storyPagesApi);
 app.use("/api/story-answers", storyAnswersApi);
+app.use("/api/quiz-scores", quizScoresApi);
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"), (err) => {

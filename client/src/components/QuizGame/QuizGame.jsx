@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useHookstate } from "@hookstate/core";
 import "./QuizGame.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
@@ -86,47 +86,67 @@ const QuizGame = () => {
   const isCorrect =
     state.selectedAnswer.get() === currentQuestion.correctAnswer;
 
-  const handleAnswerClick = (answer) => {
-    if (!state.isSubmitted.get()) {
-      state.selectedAnswer.set(answer);
-      state.isSubmitted.set(true);
+  // moves to next question or goes to leaderboard
+  const handleNextAction = useCallback(() => {
+    setTimeout(() => {
+      const nextIndex = state.currentQuestionIndex.get() + 1;
+      if (nextIndex < state.quizData.get().length) {
+        state.currentQuestionIndex.set(nextIndex);
+      } else {
+        fetch("/api/quiz-scores/", {
+          // Adding method type
+          method: "POST",
 
-      let bonusScore = 0;
-      if (answer === currentQuestion.correctAnswer) {
-        const timeLeft = timer;
-        bonusScore = Math.max(0, timeLeft * 10);
-        state.score.set(state.score.get() + bonusScore);
+          // Adding body or contents to send
+          body: JSON.stringify([
+            {
+              username: localStorage.getItem("agilearning-username"),
+              points: state.score.get(),
+              quizId: id,
+            },
+          ]),
+
+          // Adding headers to the request
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }).then(() => {
+          navigate(`/leaderboard/${id}`, {
+            state: { score: state.score.get() },
+          });
+        });
       }
+      state.isSubmitted.set(false);
+    }, 2000);
+  }, [state]);
 
-      // moves to next question or goes to leaderboard
-      setTimeout(() => {
-        const nextIndex = state.currentQuestionIndex.get() + 1;
-        if (nextIndex < state.quizData.get().length) {
-          state.currentQuestionIndex.set(nextIndex);
-        } else {
-          navigate("/leaderboard", { state: { score: state.score.get() } });
+  const handleAnswerClick = useCallback(
+    (answer) => {
+      if (!state.isSubmitted.get()) {
+        state.selectedAnswer.set(answer);
+        state.isSubmitted.set(true);
+
+        let bonusScore = 0;
+        if (answer === currentQuestion.correctAnswer) {
+          const timeLeft = timer;
+          bonusScore = Math.max(0, timeLeft * 10);
+          state.score.set(state.score.get() + bonusScore);
         }
-        state.isSubmitted.set(false);
-      }, 2000);
-    }
-  };
 
-  const handleTimerExpire = () => {
+        handleNextAction();
+      }
+    },
+    [state, currentQuestion, handleNextAction]
+  );
+
+  const handleTimerExpire = useCallback(() => {
     if (!state.isSubmitted.get()) {
       state.selectedAnswer.set("");
       state.isSubmitted.set(true);
 
-      setTimeout(() => {
-        const nextIndex = state.currentQuestionIndex.get() + 1;
-        if (nextIndex < state.quizData.get().length) {
-          state.currentQuestionIndex.set(nextIndex);
-        } else {
-          navigate("/leaderboard", { state: { score: state.score.get() } });
-        }
-        state.isSubmitted.set(false);
-      }, 2000);
+      handleNextAction();
     }
-  };
+  }, [state, handleNextAction]);
 
   return (
     <div className="quiz-game">

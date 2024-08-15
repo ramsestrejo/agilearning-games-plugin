@@ -62,6 +62,7 @@ const CreateGameScreen = () => {
                 key={game.name}
                 game={game}
                 onCreateGame={handleCreateGame}
+                isDisabled={!["quiz", "story"].includes(game.name)}
               />
             ))}
           </div>

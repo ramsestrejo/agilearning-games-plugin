@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const JoinGameScreen = () => {
   const navigate = useNavigate();
-  // states for holding the page data related to the user and game
-  const [username, setDisplayName] = React.useState("");
+  const [username, setDisplayName] = React.useState(
+    localStorage.getItem("agilearning-username") ?? ""
+  );
   const [gameId, setGameId] = React.useState("");
   const [games, setGames] = useState([]);
-  const [selectedGame, setSelectedGame] = useState(games[0]);
+  const [selectedGame, setSelectedGame] = useState("");
 
   useEffect(() => {
     fetch("/api/games/:gameName")
@@ -26,6 +27,7 @@ const JoinGameScreen = () => {
 
   // joins a game based on the game type and id
   const handleJoin = () => {
+    localStorage.setItem("agilearning-username", username);
     navigate(`/${selectedGame}-game/${gameId}`);
   };
 
@@ -42,11 +44,17 @@ const JoinGameScreen = () => {
           />
           <select
             id="GameType"
+            value={selectedGame}
             onChange={(e) => setSelectedGame(e.target.value)}
           >
-            {games.map((game) => (
-              <option value={game}>{game}</option>
-            ))}
+            <option value="">Select a Game</option>
+            {games
+              .filter((name) => ["quiz", "story"].includes(name))
+              .map((game) => (
+                <option key={game} value={game}>
+                  {game}
+                </option>
+              ))}
           </select>
           <input
             type="text"
@@ -54,7 +62,10 @@ const JoinGameScreen = () => {
             value={gameId}
             onChange={(e) => setGameId(e.target.value)}
           />
-          <button disabled={!gameId} onClick={handleJoin}>
+          <button
+            disabled={!gameId || !username || !selectedGame}
+            onClick={handleJoin}
+          >
             Join Game
           </button>
         </div>

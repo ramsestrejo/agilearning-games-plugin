@@ -28,7 +28,9 @@ const StoryGame = () => {
       const storyAnswers = await fetch(`/api/story-answers/story/${id}`).then(
         async (res) => await res.json()
       );
-      const customMessages = await fetch(`/api/custom-messages/story/${id}`).then(res => res.json());
+      const customMessages = await fetch(
+        `/api/custom-messages/story/${id}`
+      ).then((res) => res.json());
 
       state.storyData.set(
         storyPages.map(({ question, pageNumber, content }) => {

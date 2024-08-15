@@ -1,32 +1,45 @@
-import React from "react";
+import React, { useMemo, useEffect, useState } from "react";
+import { useHookstate } from "@hookstate/core";
 import "./Leaderboard.css";
 import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
+// fetch score data from database
+// place score data into ui
 
 // component displays the top scores, followed by the lower scores
 // users can then retry the quiz or go to the homescreen
-const Leaderboard = ({ score, resetGame }) => {
+const Leaderboard = ({ resetGame }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  // temporary data until connection to backend
-  const leaderboardData = [
-    { playerName: "Player 1", score: 80 },
-    { playerName: "Player 2", score: 130 },
-    { playerName: "Player 3", score: 40 },
-    { playerName: "Player 4", score: 30 },
-    { playerName: "Player 5", score: 10 },
-    { playerName: "Player 6", score: 20 },
-    { playerName: "Player 7", score: 40 },
-  ];
+  const [quizScores, setQuizScores] = useState([]);
 
-  // sorts the leaderboard scores
-  const sortedLeaderboardData = [...leaderboardData].sort(
-    (a, b) => b.score - a.score
-  );
+  useEffect(() => {
+    const loadQuizScoreData = async () => {
+      // Fetch quiz score data from the endpoint
+      const quizScores = await fetch(`/api/quiz-scores/${id}`).then(
+        async (res) => await res.json()
+      );
 
-  // gets the top three scores and then the remaining scores
-  const topThree = sortedLeaderboardData.slice(0, 3);
-  const remainingScores = sortedLeaderboardData.slice(3);
+      // process the quiz score data
+      const quizScoreData = quizScores.map(({ username, points, quiz_id }) => {
+        return {
+          username,
+          points,
+          quizId: quiz_id,
+        };
+      });
+
+      setQuizScores(quizScoreData);
+    };
+
+    // Data is loaded only when necessary
+    loadQuizScoreData();
+  }, []);
+
+  const topThree = useMemo(() => quizScores.slice(0, 3), [quizScores]);
+  const remainingScores = useMemo(() => quizScores.slice(3), [quizScores]);
 
   // handle returning to the homescreen
   const handleReturnToMenu = () => {
@@ -40,25 +53,25 @@ const Leaderboard = ({ score, resetGame }) => {
         <div className="top-scores">
           <div className="top-score-left">
             <FaStar style={{ color: "#ffdf5f", fontSize: "1.5em" }} />
-            <h2>{topThree[1]?.playerName}</h2>
-            <p>{topThree[1]?.score}</p>
+            <h2>{topThree[1]?.username}</h2>
+            <p>{topThree[1]?.points}</p>
           </div>
           <div className="top-score-center">
             <FaStar style={{ color: "#fd3d7b", fontSize: "2em" }} />
-            <h2>{topThree[0]?.playerName}</h2>
-            <p>{topThree[0]?.score}</p>
+            <h2>{topThree[0]?.username}</h2>
+            <p>{topThree[0]?.points}</p>
           </div>
           <div className="top-score-right">
             <FaStar style={{ color: "#ffdf5f", fontSize: "1.5em" }} />
-            <h2>{topThree[2]?.playerName}</h2>
-            <p>{topThree[2]?.score}</p>
+            <h2>{topThree[2]?.username}</h2>
+            <p>{topThree[2]?.points}</p>
           </div>
         </div>
       </IconContext.Provider>
       <ul className="rest-of-scores">
         {remainingScores.map((entry, index) => (
           <li key={index}>
-            {entry.playerName}: {entry.score}
+            {entry.username}: {entry.points}
           </li>
         ))}
       </ul>
