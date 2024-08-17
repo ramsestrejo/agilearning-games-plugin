@@ -24,6 +24,7 @@ const QuizForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { questions } = state.get();
+    console.log("questions: ", questions);
 
     const gameCode = generateGameCode();
 
@@ -89,6 +90,7 @@ const QuizForm = () => {
     });
 
     const newQuizAnswersJson = await newQuizAnswers.json();
+    console.log("newQuizAnswersJson: ", newQuizAnswersJson);
 
     navigate(
       `/creation-success/${id}?${createSearchParams({

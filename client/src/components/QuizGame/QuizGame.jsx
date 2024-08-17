@@ -35,18 +35,20 @@ const QuizGame = () => {
       console.log(quizAnswers);
 
       state.quizData.set(
-        quizPages.map(({ question, pageNumber }) => {
-          const pageAnswers = quizAnswers.filter(
-            ({ quizPage }) => quizPage === pageNumber
-          );
+        quizPages
+          .sort((a, b) => a.pageNumber - b.pageNumber)
+          .map(({ question, pageNumber }) => {
+            const pageAnswers = quizAnswers.filter(
+              ({ quizPage }) => quizPage === pageNumber
+            );
 
-          return {
-            questionText: question,
-            answers: pageAnswers.map(({ answerText }) => answerText),
-            correctAnswer: pageAnswers.find(({ isCorrect }) => isCorrect)
-              ?.answerText,
-          };
-        })
+            return {
+              questionText: question,
+              answers: pageAnswers.map(({ answerText }) => answerText),
+              correctAnswer: pageAnswers.find(({ isCorrect }) => isCorrect)
+                ?.answerText,
+            };
+          })
       );
     };
 
