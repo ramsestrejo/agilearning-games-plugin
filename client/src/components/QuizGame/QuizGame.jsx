@@ -6,14 +6,11 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 const QuizGame = () => {
   // get quiz id
   const { id } = useParams();
-
-  useEffect(() => console.log(id), [id]);
+  const navigate = useNavigate();
 
   // local state for start time
   const [timer, setTimer] = useState(30);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
-  // temporary use state for quiz data
-  const [temp, setTemp] = useState(true);
 
   // state for quiz data
   const state = useHookstate({
@@ -25,6 +22,7 @@ const QuizGame = () => {
   });
 
   useEffect(() => {
+    console.log("loading quiz data...");
     const loadQuizData = async () => {
       const quizPages = await fetch(`/api/quiz-pages/quiz/${id}`).then(
         async (res) => await res.json()
@@ -33,12 +31,14 @@ const QuizGame = () => {
         async (res) => await res.json()
       );
 
+      console.log(quizPages);
+      console.log(quizAnswers);
+
       state.quizData.set(
         quizPages.map(({ question, pageNumber }) => {
           const pageAnswers = quizAnswers.filter(
             ({ quizPage }) => quizPage === pageNumber
           );
-          console.log(pageAnswers);
 
           return {
             questionText: question,
@@ -50,13 +50,8 @@ const QuizGame = () => {
       );
     };
 
-    if (temp && state) {
-      loadQuizData();
-      setTemp(false);
-    }
-  }, [temp, state]);
-
-  const navigate = useNavigate();
+    loadQuizData();
+  }, []);
 
   useEffect(() => {
     const currentQuestionIndex = state.currentQuestionIndex.get();
@@ -84,7 +79,7 @@ const QuizGame = () => {
   const currentQuestion =
     state.quizData.get()[state.currentQuestionIndex.get()];
   const isCorrect =
-    state.selectedAnswer.get() === currentQuestion.correctAnswer;
+    state.selectedAnswer.get() === currentQuestion?.correctAnswer;
 
   // moves to next question or goes to leaderboard
   const handleNextAction = useCallback(() => {
@@ -153,7 +148,7 @@ const QuizGame = () => {
       <div className="quizgame-form">
         <div className="question-timer-wrapper">
           <div className="question-section">
-            <h2>{currentQuestion.questionText}</h2>
+            <h2>{currentQuestion?.questionText}</h2>
           </div>
           <div className="timer-section">
             <h3>{timer}</h3>
@@ -161,7 +156,7 @@ const QuizGame = () => {
         </div>
         <div className="answers-section">
           <div className="answers-grid">
-            {currentQuestion.answers.map((answer, index) => {
+            {currentQuestion?.answers.map((answer, index) => {
               const isSelected = state.selectedAnswer.get() === answer;
               return (
                 <button

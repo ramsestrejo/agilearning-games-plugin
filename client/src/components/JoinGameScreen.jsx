@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./JoinGameScreen.css";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,7 @@ const JoinGameScreen = () => {
   const [gameId, setGameId] = React.useState("");
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     fetch("/api/games/:gameName")
@@ -25,11 +26,32 @@ const JoinGameScreen = () => {
       .catch((error) => console.error("Error fetching games:", error));
   }, []);
 
+  const apiController = useMemo(() => {
+    switch (selectedGame) {
+      case "quiz":
+        return "quizzes";
+      case "story":
+        return "stories";
+      default:
+        return "";
+    }
+  }, [selectedGame]);
+
   // joins a game based on the game type and id
-  const handleJoin = () => {
+  const handleJoin = useCallback(() => {
     localStorage.setItem("agilearning-username", username);
-    navigate(`/${selectedGame}-game/${gameId}`);
-  };
+    setErrorMessage("");
+
+    fetch(`/api/${apiController}/${gameId}`)
+      .then((response) => {
+        if (response.status === 404) {
+          setErrorMessage("Game Id does not exist");
+          return;
+        }
+        navigate(`/${selectedGame}-game/${gameId}`);
+      })
+      .catch(() => setErrorMessage("Something went wrong"));
+  }, [username, gameId, selectedGame, apiController]);
 
   return (
     <div className="join-game-screen">
@@ -60,7 +82,9 @@ const JoinGameScreen = () => {
             type="text"
             placeholder="Enter game id"
             value={gameId}
-            onChange={(e) => setGameId(e.target.value)}
+            onChange={(e) => {
+              setGameId(e.target.value);
+            }}
           />
           <button
             disabled={!gameId || !username || !selectedGame}
@@ -68,6 +92,7 @@ const JoinGameScreen = () => {
           >
             Join Game
           </button>
+          {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
         </div>
       </div>
     </div>
