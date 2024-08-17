@@ -11,7 +11,7 @@ export default ({ mode }) => {
       port: parseInt(env.VITE_PORT) || 3000, // Vite's port
       proxy: {
         "/api": {
-          target: `http://localhost:${parseInt(env.VITE_API_PORT) || 3001}/api`, // Port where Express is running
+          target: `http://localhost:${parseInt(env.VITE_API_PORT) || 8080}/api`, // Port where Express is running
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
           secure: false,

@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
