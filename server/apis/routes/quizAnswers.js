@@ -27,9 +27,7 @@ router.post("/", async (req, res) => {
     })
   ).catch((error) => {
     console.log(error);
-    return res
-      .status(500)
-      .json({ error: "An error occured while creating a quiz answer." });
+    return res.status(500).json({ error: error });
   });
 
   return res.status(201).send(newQuizAnswers);
