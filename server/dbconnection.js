@@ -9,12 +9,8 @@ const configuration = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  connectionLimit: 100000,
 };
-if (process.env.DATABASE_SOCKET) {
-  configuration.socketPath = process.env.DATABASE_SOCKET;
-} else {
-  configuration.host = process.env.DB_HOST;
-}
 
 const db = new Db(configuration);
 
