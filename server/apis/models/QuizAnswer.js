@@ -47,13 +47,20 @@ class QuizAnswer {
 
   async save() {
     const result = await db.query(
-      "INSERT INTO quiz_answers (quiz_page, quiz_id, answer_text, is_correct) VALUES (?, ?, ?, ?)",
+      "INSERT INTO quiz_answers (quiz_page, quiz_id, answer_text, is_correct) VALUES (?, ?, ?, ?), ",
       [this.quizPage, this.quizId, this.answerText, this.isCorrect]
     );
 
     this.id = result.insertId;
 
     return QuizAnswer.findById(result.insertId);
+  }
+
+  static async saveAll(valueString, valueArray) {
+    await db.query(
+      `INSERT INTO quiz_answers (quiz_page, quiz_id, answer_text, is_correct) VALUES ${valueString}`,
+      valueArray
+    );
   }
 }
 

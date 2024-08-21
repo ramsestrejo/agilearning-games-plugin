@@ -4,33 +4,65 @@ import Quiz from "../models/Quiz.js";
 
 const router = express.Router();
 
+// Previous implementation: used too many database connection requests
+// router.post("/", async (req, res) => {
+//   const quizIds = new Set(req.body.map(({ quizId }) => quizId));
+//   const foundQuizIds = await Promise.all(
+//     [...quizIds].map(async (quizId) => Quiz.findById(quizId))
+//   );
+
+//   if (foundQuizIds.some((quizId) => quizId === null))
+//     return res.status(400).send("Quiz id does not exist.");
+
+//   const newQuizAnswers = await Promise.all(
+//     req.body.map(async ({ quizPage, quizId, answerText, isCorrect }) => {
+//       const newQuizAnswer = new QuizAnswer(
+//         null,
+//         quizPage,
+//         quizId,
+//         answerText,
+//         isCorrect
+//       );
+
+//       return newQuizAnswer.save();
+//     })
+//   ).catch((error) => {
+//     console.log(error);
+//     return res.status(500).json({ error: error });
+//   });
+
+//   return res.status(201).send(newQuizAnswers);
+// });
+
 router.post("/", async (req, res) => {
-  const quizIds = new Set(req.body.map(({ quizId }) => quizId));
-  const foundQuizIds = await Promise.all(
-    [...quizIds].map(async (quizId) => Quiz.findById(quizId))
+  // Checking for quizIds creates another database connection request which will cause issues if there are too many requests
+
+  // const quizIds = new Set(req.body.map(({ quizId }) => quizId));
+  // const foundQuizIds = await Promise.all(
+  //   [...quizIds].map(async (quizId) => Quiz.findById(quizId))
+  // );
+
+  // if (foundQuizIds.some((quizId) => quizId === null))
+  //   return res.status(400).send("Quiz id does not exist.");
+
+  const count = req.body.length;
+  const valueString = Array(count).fill("(?, ?, ?, ?)").join(", ");
+
+  const valueArray = req.body.reduce(
+    (acc, { quizPage, quizId, answerText, isCorrect }) => {
+      acc.push(quizPage, quizId, answerText, isCorrect);
+      return acc;
+    },
+    []
   );
 
-  if (foundQuizIds.some((quizId) => quizId === null))
-    return res.status(400).send("Quiz id does not exist.");
+  try {
+    await QuizAnswer.saveAll(valueString, valueArray);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 
-  const newQuizAnswers = await Promise.all(
-    req.body.map(async ({ quizPage, quizId, answerText, isCorrect }) => {
-      const newQuizAnswer = new QuizAnswer(
-        null,
-        quizPage,
-        quizId,
-        answerText,
-        isCorrect
-      );
-
-      return newQuizAnswer.save();
-    })
-  ).catch((error) => {
-    console.log(error);
-    return res.status(500).json({ error: error });
-  });
-
-  return res.status(201).send(newQuizAnswers);
+  return res.status(201).send("Save successful");
 });
 
 router.get("/", async (req, res) => {
