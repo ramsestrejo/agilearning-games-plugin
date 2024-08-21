@@ -55,6 +55,13 @@ class StoryAnswer {
 
     return StoryAnswer.findById(result.insertId);
   }
+
+  static async saveAll(valueString, valueArray) {
+    await db.query(
+      `INSERT INTO story_answers (story_page_id, story_id, answer_text, is_correct) VALUES ${valueString}`,
+      valueArray
+    );
+  }
 }
 
 export default StoryAnswer;

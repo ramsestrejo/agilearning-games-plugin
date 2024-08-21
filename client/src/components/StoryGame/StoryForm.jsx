@@ -5,7 +5,9 @@ import "./StoryForm.css";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 const StoryForm = () => {
-  const [customMessages, setCustomMessages] = useState([{ threshold: "", message: "" }]);
+  const [customMessages, setCustomMessages] = useState([
+    { threshold: "", message: "" },
+  ]);
   const state = useHookstate({
     storyBlocks: [
       {
@@ -39,8 +41,6 @@ const StoryForm = () => {
     });
 
     const { id } = await newStory.json();
-
-    console.log(storyBlocks);
 
     const newStoryPages = await fetch("/api/story-pages", {
       // Adding method type
@@ -87,7 +87,7 @@ const StoryForm = () => {
       },
     });
 
-    const newStoryAnswersJson = await newStoryAnswers.json();
+    // const newStoryAnswersJson = await newStoryAnswers.json();
 
     // post request for creating custom messages
     await fetch("/api/custom-messages", {
@@ -148,7 +148,9 @@ const StoryForm = () => {
               <input
                 type="number"
                 value={msg.threshold}
-                onChange={(e) => handleCustomMessageChange(index, "threshold", e.target.value)}
+                onChange={(e) =>
+                  handleCustomMessageChange(index, "threshold", e.target.value)
+                }
               />
             </label>
             <label>
@@ -156,12 +158,18 @@ const StoryForm = () => {
               <input
                 type="text"
                 value={msg.message}
-                onChange={(e) => handleCustomMessageChange(index, "message", e.target.value)}
+                onChange={(e) =>
+                  handleCustomMessageChange(index, "message", e.target.value)
+                }
               />
             </label>
           </div>
         ))}
-        <button className="add-custom-message-btn" type="button" onClick={handleAddCustomMessage}>
+        <button
+          className="add-custom-message-btn"
+          type="button"
+          onClick={handleAddCustomMessage}
+        >
           Add Custom Message
         </button>
       </div>
