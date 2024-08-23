@@ -21,8 +21,10 @@ This application requires Node, npm, and Docker to run.
 - Clone the app to your local system
 - In /agilearning-plugin, run "npm run install-dependencies" in the terminal.
 - In /agilearning-plugin/client, add an .env file with these parameters:
+
   - VITE_API_PORT=8080
   - VITE_PORT=3000
+
 - In /agilearning-plugin/server, add an .env file with these parameters:
 
   - PORT=8080
@@ -52,14 +54,15 @@ In the /agilearning-plugin terminal, run "npm run start".
 1. Select "Reveal config vars" in "Config Vars"
 1. Add the database configuration variables from the database dashboard (no quotes):
 
-- Key: "DB_HOST" / Value: "Host value"
-- Key: "DB_NAME" / Value: "Database value"
-- Key: "DB_PASSWORD" / Value: "Password value"
-- Key: "DB_USER' / Value: "Username value"
-- Key: "JAWSDB_URL" / Value: "Connection String"
-- Key: "PORT" / Value: "8080"
-- Key: "VITE_API_PORT" / Value: "8080"
-- Key: "VITE_PORT" / Value: "3000"
+   - Key: "DB_HOST" / Value: "Host value"
+
+   - Key: "DB_NAME" / Value: "Database value"
+   - Key: "DB_PASSWORD" / Value: "Password value"
+   - Key: "DB_USER' / Value: "Username value"
+   - Key: "JAWSDB_URL" / Value: "Connection String"
+   - Key: "PORT" / Value: "8080"
+   - Key: "VITE_API_PORT" / Value: "8080"
+   - Key: "VITE_PORT" / Value: "3000"
 
 1. Add tables/necessary data to the database through a tool like MySQL Workbench (next section).
 1. Navigate to the "Deploy" tab, and select "GitHub" in the "Deployment method" section.
